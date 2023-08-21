@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useGauge} from '../../hooks/useGauge';
-import {GaugeParams, StrokeLineCamp} from "../../types";
+import {Colors, GaugeParams, StrokeLineCamp} from "../../types";
 
 
 const defaultGaugeOptions = {
@@ -44,7 +44,7 @@ const Gauge = ({
                    needleColor = defaultGaugeOptions.needleColor,
                    needleOffset = defaultGaugeOptions.needleOffset,
                }: GaugeParams) => {
-    const [progressColorOfValue, setProgressColorOfValue] = useState("#329e11");
+    const [progressColorOfValue, setProgressColorOfValue] = useState(Colors.GREEN);
 
     if (value > maxValue) {
         value = maxValue
@@ -52,22 +52,22 @@ const Gauge = ({
 
     useEffect(() => {
         if (warnValue === undefined && critValue === undefined) {
-            setProgressColorOfValue("#329e11");
+            setProgressColorOfValue(Colors.GREEN);
         } else if (critValue === undefined) {
             // @ts-ignore
-            setProgressColorOfValue(value < warnValue ? "#329e11" : "#dceb15");
+            setProgressColorOfValue(value < warnValue ? Colors.GREEN : Colors.YELLOW);
         } else if (warnValue === undefined) {
-            setProgressColorOfValue(value < critValue ? "#329e11" : "#c7472e");
+            setProgressColorOfValue(value < critValue ? Colors.GREEN : Colors.RED);
         } else {
             switch (true) {
                 case value >= minValue && value < warnValue:
-                    setProgressColorOfValue("#329e11");
+                    setProgressColorOfValue(Colors.GREEN);
                     break;
                 case value > warnValue && value < maxValue:
-                    setProgressColorOfValue("#dceb15");
+                    setProgressColorOfValue(Colors.YELLOW);
                     break;
                 case value >= critValue:
-                    setProgressColorOfValue("#c7472e");
+                    setProgressColorOfValue(Colors.RED);
                     break;
                 default:
                     return;

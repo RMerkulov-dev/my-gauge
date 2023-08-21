@@ -38,6 +38,12 @@ export enum StrokeLineCamp {
     INHERIT = 'inherit'
 }
 
+export enum Colors {
+    GREEN = "#329e11",
+    YELLOW = "#dceb15",
+    RED = "#c7472e"
+}
+
 export interface GaugeParams {
     engine?: Eva;
     value: number;
