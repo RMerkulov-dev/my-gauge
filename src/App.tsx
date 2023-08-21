@@ -10,7 +10,7 @@ const App = ({engine}: { engine: Eva }) => {
 
     return (
         <>
-            <Gauge engine={engine} minValue={0} warnValue={30} critValue={60} maxValue={75} value={value}/>
+            <Gauge engine={engine} minValue={0} maxValue={65} value={value}/>
         </>
     )
 }

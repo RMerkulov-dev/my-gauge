@@ -46,6 +46,9 @@ const Gauge = ({
                }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState("#329e11");
 
+    if (value > maxValue) {
+        value = maxValue
+    }
 
     useEffect(() => {
         if (warnValue === undefined && critValue === undefined) {

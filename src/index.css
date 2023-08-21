@@ -1,29 +1,36 @@
-.gauge-wrapper{
+.gauge-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     height: 100%;
 }
-.gauge-preview{
+
+.gauge-preview {
     max-width: 100%;
     overflow: visible;
     padding: 30px;
+
 }
-.stroke-default-color{
+
+.stroke-default-color {
     stroke: #f7fafc;
 }
-.text-default-color{
+
+.text-default-color {
     font-size: 0.875rem;
     font-weight: 500;
     fill: #6b7280;
 }
-.middle-circle-color{
+
+.middle-circle-color {
     fill: #d1d5db;
 }
-.midpoint-color{
+
+.midpoint-color {
     fill: #d1d5db;
 }
-.test{
+
+.test {
     width: 100px;
     height: 100px;
 }
