@@ -35,8 +35,9 @@ export interface GaugeParams {
     engine?: Eva;
     value: number;
     minValue: number,
-    midValue: number;
     maxValue: number,
+    warnValue?: number;
+    critValue?: number;
     startAngle?: number,
     endAngle?: number,
     diameter?: number,

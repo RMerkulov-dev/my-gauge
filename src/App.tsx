@@ -6,13 +6,11 @@ import {useEvaState} from "@eva-ics/webengine-react";
 
 const App = ({engine}: { engine: Eva }) => {
     const state = useEvaState({oid: "sensor:tests/temp", engine});
-    const value = state.value;
-
-    console.log(value)
+    const value = state.value || 0;
 
     return (
         <>
-            <Gauge engine={engine} minValue={0} maxValue={93} value={value} midValue={40}/>
+            <Gauge engine={engine} minValue={0} critValue={60} maxValue={75} value={value}/>
         </>
     )
 }
