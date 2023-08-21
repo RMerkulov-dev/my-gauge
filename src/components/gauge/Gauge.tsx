@@ -112,7 +112,7 @@ const Gauge = ({
                     fill="none"
                     className="stroke-default-color"
                     strokeWidth={arcStrokeWidth}
-                    strokeLinecap={strokeLineCap as "round" | "butt" | "square" | "inherit" | undefined}
+                    strokeLinecap={strokeLineCap}
                 />
                 {value > minValue && (
                     <path
@@ -124,7 +124,7 @@ const Gauge = ({
                         fill="none"
                         stroke={progressColorOfValue}
                         strokeWidth={arcStrokeWidth}
-                        strokeLinecap={strokeLineCap as "round" | "butt" | "square" | "inherit" | undefined}
+                        strokeLinecap={strokeLineCap}
                     />
                 )}
                 <g id="ticks">
