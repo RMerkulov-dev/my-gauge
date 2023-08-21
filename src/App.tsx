@@ -1,5 +1,5 @@
 import React from 'react';
-import {Eva, EvaError, EventKind} from "@eva-ics/webengine";
+import {Eva} from "@eva-ics/webengine";
 import Gauge from "./components/gauge/Gauge";
 import {useEvaState} from "@eva-ics/webengine-react";
 
@@ -10,7 +10,7 @@ const App = ({engine}: { engine: Eva }) => {
 
     return (
         <>
-            <Gauge engine={engine} minValue={0} critValue={60} maxValue={75} value={value}/>
+            <Gauge engine={engine} minValue={0} warnValue={30} critValue={60} maxValue={75} value={value}/>
         </>
     )
 }

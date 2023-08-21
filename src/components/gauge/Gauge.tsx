@@ -47,30 +47,6 @@ const Gauge = ({
     const [progressColorOfValue, setProgressColorOfValue] = useState("#329e11");
 
 
-    // useEffect(() => {
-    //     if (warnValue === undefined) {
-    //         // If no warnValue, show green and red
-    //         setProgressColorOfValue(value >= maxValue ? "#c7472e" : "#329e11");
-    //     } else if (critValue === undefined) {
-    //         // If no critValue, show green and yellow
-    //         setProgressColorOfValue(value >= warnValue ? "#dceb15" : "#329e11");
-    //         setProgressColorOfValue(value >= maxValue ? "#c7472e" : "#329e11");
-    //         setProgressColorOfValue(value <= warnValue ? "#329e11" : "#dceb15");
-    //     } else {
-    //         { // If both warnValue and critValue are available
-    //             if (value >= minValue && value < warnValue) {
-    //                 setProgressColorOfValue("#329e11");
-    //             } else if (value >= warnValue && value < critValue) {
-    //                 setProgressColorOfValue("#dceb15");
-    //             } else if (value >= critValue && value < maxValue) {
-    //                 setProgressColorOfValue("#c7472e");
-    //             } else if (value >= maxValue) {
-    //                 setProgressColorOfValue("#c7472e");
-    //             }
-    //         }
-    //     }
-    // }, [value, warnValue, critValue, minValue, maxValue]);
-
     useEffect(() => {
         if (warnValue === undefined && critValue === undefined) {
             setProgressColorOfValue("#329e11");
