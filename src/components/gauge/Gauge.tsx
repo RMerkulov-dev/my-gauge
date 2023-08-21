@@ -1,10 +1,14 @@
 import React from 'react';
 import { useGauge } from '../../hooks/useGauge';
 import {defaultGaugeOptions} from "./defaultGaugeOptions";
+import {Eva} from "@eva-ics/webengine";
+import {useEvaState} from "@eva-ics/webengine-react";
 
-const Gauge = () => {
+const Gauge = ({engine}:{engine:Eva}) => {
+    const state = useEvaState({ oid: "sensor:tests/temp",engine });
+    const value = state.value;
 
-    const {  value,
+    const {
         diameter,
         minValue,
         maxValue,
@@ -21,6 +25,7 @@ const Gauge = () => {
         tipRadius,
         needleColor,
         needleOffset}=defaultGaugeOptions
+
 
     const {
         ticks,

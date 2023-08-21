@@ -4,7 +4,7 @@ import App from './App'
 import './index.css'
 import {Eva, EvaError, EventKind} from "@eva-ics/webengine";
 
-const engine=new Eva()
+
 const eva = new Eva();
 const log = eva.log;
 
