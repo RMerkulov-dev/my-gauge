@@ -118,7 +118,7 @@ const Gauge = () => {
                         endAngle,
                     })}
                     fill="none"
-                    className="stroke-gray-100"
+                    className="stroke-default-color"
                     strokeWidth={arcStrokeWidth}
                     // @ts-ignore
                     strokeLinecap={strokeLineCap}
@@ -146,7 +146,7 @@ const Gauge = () => {
                                     {...getTickProps({ angle, length: tickLength })}
                                 />
                                 <text
-                                    className="text-sm fill-gray-500 font-medium"
+                                    className="text-default-color"
                                     {...getLabelProps({ angle, offset: 20 })}
                                 >
                                     {angleToValue(angle)}
@@ -156,11 +156,11 @@ const Gauge = () => {
                     })}
                 </g>
                 <g id="needle">
-                    <circle className="fill-gray-300" {...base} r={24} />
+                    <circle className="middle-circle-color" {...base} r={24} />
                     <circle fill={needleColor} {...base} />
                     <circle fill={needleColor} {...tip} />
                     <polyline fill={needleColor} points={points} />
-                    <circle className="fill-white" {...base} r={4} />
+                    <circle className="midpoint-color" {...base} r={4} />
                 </g>
             </svg>
         </div>
