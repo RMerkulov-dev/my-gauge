@@ -1,0 +1,11 @@
+.gauge-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+.gauge-preview{
+    max-width: 100%;
+    overflow: visible;
+    padding: 30px;
+}
