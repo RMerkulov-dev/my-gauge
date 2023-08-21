@@ -31,6 +31,13 @@ export interface GetLabelPropsParams {
     offset: number;
 }
 
+export enum StrokeLineCamp {
+    BUTT = "butt",
+    ROUND = "round",
+    SQUARE = "square",
+    INHERIT = 'inherit'
+}
+
 export interface GaugeParams {
     engine?: Eva;
     value: number;
@@ -45,7 +52,7 @@ export interface GaugeParams {
     offset?: number,
     arcStrokeWidth?: number,
     progressColor?: string,
-    strokeLineCap?: 'butt' | 'round' | 'square' | 'inherit' | undefined,
+    strokeLineCap?: StrokeLineCamp | undefined,
     tickColor?: string,
     tickLength?: number,
     baseRadius?: number,

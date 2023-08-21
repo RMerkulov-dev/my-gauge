@@ -6,7 +6,7 @@ import {useEvaState} from "@eva-ics/webengine-react";
 
 const App = ({engine}: { engine: Eva }) => {
     const state = useEvaState({oid: "sensor:tests/temp", engine});
-    const value = state.value || 0;
+    const value = state.value;
 
     return (
         <>

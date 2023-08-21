@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useGauge} from '../../hooks/useGauge';
-import {GaugeParams} from "../../types";
+import {GaugeParams, StrokeLineCamp} from "../../types";
 
 
 const defaultGaugeOptions = {
@@ -24,7 +24,7 @@ const defaultGaugeOptions = {
 };
 
 const Gauge = ({
-                   value,
+                   value = defaultGaugeOptions.value,
                    diameter = defaultGaugeOptions.diameter,
                    minValue,
                    warnValue,
@@ -36,7 +36,7 @@ const Gauge = ({
                    offset = defaultGaugeOptions.offset,
                    arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
                    progressColor = defaultGaugeOptions.progressColor,
-                   strokeLineCap = "round",
+                   strokeLineCap = StrokeLineCamp.ROUND,
                    tickColor = defaultGaugeOptions.tickColor,
                    tickLength = defaultGaugeOptions.tickLength,
                    baseRadius = defaultGaugeOptions.baseRadius,
