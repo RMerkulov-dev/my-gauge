@@ -29,6 +29,6 @@ eva.start();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App engine={engine} />
+    <App engine={eva} />
   </React.StrictMode>,
 )
