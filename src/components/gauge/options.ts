@@ -1,0 +1,20 @@
+
+export const defaultGaugeOptions = {
+    value: 0,
+    diameter: 300,
+    minValue: 0,
+    maxValue: 100,
+    startAngle: 90,
+    endAngle: 270,
+    numTicks: 11,
+    offset: 8,
+    arcStrokeWidth: 24,
+    progressColor: 'cornflowerblue',
+    strokeLineCap: 'round',
+    tickColor: '#ccc',
+    tickLength: 10,
+    baseRadius: 12,
+    tipRadius: 2,
+    needleColor: '#374151',
+    needleOffset: 35,
+};

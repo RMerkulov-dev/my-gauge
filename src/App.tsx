@@ -1,12 +1,14 @@
 import React from 'react';
-import Gauge from "./components/gauge/Gauge";
+import GaugeWidthControls from "./components/gauge/GaugeWidthControls";
+import SingleGauge from "./components/gauge/SingleGauge";
 
 
 const App=()=> {
 
    return(
        <>
-       <Gauge/>
+       {/*<GaugeWidthControls/>*/}
+           <SingleGauge/>
        </>
    )
 }

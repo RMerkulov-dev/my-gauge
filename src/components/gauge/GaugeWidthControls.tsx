@@ -2,7 +2,7 @@ import React from 'react';
 import {useControls} from "leva";
 import {useGauge} from "../../hooks/useGauge";
 
-const Gauge = () => {
+const GaugeWidthControls = () => {
     const {
         value,
         diameter,
@@ -11,7 +11,7 @@ const Gauge = () => {
         startAngle,
         endAngle,
         numTicks,
-    } = useControls('Gauge settings', {
+    } = useControls('GaugeWidthControls settings', {
         diameter: { value: 300 },
         value: { value: 0, min: 0, max: 100 },
         minValue: { value: 0 },
@@ -167,4 +167,4 @@ const Gauge = () => {
     );
 };
 
-export default Gauge;
+export default GaugeWidthControls;
