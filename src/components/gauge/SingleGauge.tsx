@@ -1,25 +1,27 @@
 import React from 'react';
 import { useGauge } from '../../hooks/useGauge';
+import {defaultGaugeOptions} from "./options";
 
-const Gauge = ({
-                   value = 0,
-                   diameter = 300,
-                   minValue = 0,
-                   maxValue = 100,
-                   startAngle = 90,
-                   endAngle = 270,
-                   numTicks = 11,
-                   offset = 8,
-                   arcStrokeWidth = 24,
-                   progressColor = 'cornflowerblue',
-                   strokeLineCap = 'round',
-                   tickColor = '#ccc',
-                   tickLength = 10,
-                   baseRadius = 12,
-                   tipRadius = 2,
-                   needleColor = '#374151',
-                   needleOffset = 35,
-               }) => {
+const Gauge = () => {
+
+    const {  value,
+        diameter,
+        minValue,
+        maxValue,
+        startAngle,
+        endAngle,
+        numTicks,
+        offset,
+        arcStrokeWidth,
+        progressColor,
+        strokeLineCap,
+        tickColor,
+        tickLength,
+        baseRadius,
+        tipRadius,
+        needleColor,
+        needleOffset}=defaultGaugeOptions
+
     const {
         ticks,
         getTickProps,
