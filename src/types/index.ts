@@ -1,3 +1,5 @@
+import {Eva} from "@eva-ics/webengine";
+
 export interface UseGaugeParams {
     diameter: number;
     startAngle: number;
@@ -5,6 +7,7 @@ export interface UseGaugeParams {
     numTicks: number;
     domain: [number, number];
 }
+
 export interface GetNeedleParams {
     value: number;
     baseRadius: number;
@@ -26,4 +29,26 @@ export interface GetTickPropsParams {
 export interface GetLabelPropsParams {
     angle: number;
     offset: number;
+}
+
+export interface GaugeParams {
+    engine?: Eva;
+    value: number;
+    minValue: number,
+    midValue: number;
+    maxValue: number,
+    startAngle?: number,
+    endAngle?: number,
+    diameter?: number,
+    numTicks?: number,
+    offset?: number,
+    arcStrokeWidth?: number,
+    progressColor?: string,
+    strokeLineCap?: 'butt' | 'round' | 'square' | 'inherit' | undefined,
+    tickColor?: string,
+    tickLength?: number,
+    baseRadius?: number,
+    tipRadius?: number,
+    needleColor?: string,
+    needleOffset?: number,
 }

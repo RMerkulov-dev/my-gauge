@@ -2,8 +2,8 @@ import {useCallback, useMemo} from "react";
 import {degreesToRadians, makeTickMarks, polarToCartesian} from "../libs";
 import {GetArcPropsParams, GetLabelPropsParams, GetNeedleParams, GetTickPropsParams, UseGaugeParams} from "../types";
 
-export const useGauge=(params: UseGaugeParams)=> {
-    const { startAngle, endAngle, numTicks, diameter, domain } = params;
+export const useGauge = (params: UseGaugeParams) => {
+    const {startAngle, endAngle, numTicks, diameter, domain} = params;
     const radius = diameter / 2;
     const [minValue, maxValue] = domain;
 
@@ -13,7 +13,7 @@ export const useGauge=(params: UseGaugeParams)=> {
 
     const getLabelProps = useCallback(
         (params: GetLabelPropsParams) => {
-            const { angle, offset } = params;
+            const {angle, offset} = params;
             const p1 = polarToCartesian(0, 0, radius - offset, angle + 90);
 
             return {
@@ -28,7 +28,7 @@ export const useGauge=(params: UseGaugeParams)=> {
 
     const getTickProps = useCallback(
         (params: GetTickPropsParams) => {
-            const { length, angle } = params;
+            const {length, angle} = params;
             const p1 = polarToCartesian(0, 0, radius, angle + 90);
             const p2 = polarToCartesian(0, 0, radius + length, angle + 90);
 
@@ -59,7 +59,7 @@ export const useGauge=(params: UseGaugeParams)=> {
 
     const getArcProps = useCallback(
         (params: GetArcPropsParams) => {
-            const { offset = 0, startAngle, endAngle, ...rest } = params;
+            const {offset = 0, startAngle, endAngle, ...rest} = params;
 
             let start = polarToCartesian(0, 0, radius + offset, startAngle + 90);
             let end = polarToCartesian(0, 0, radius + offset, endAngle + 90);
@@ -90,7 +90,7 @@ export const useGauge=(params: UseGaugeParams)=> {
 
     const getNeedleProps = useCallback(
         (params: GetNeedleParams) => {
-            const { value, baseRadius, tipRadius, offset = 0 } = params;
+            const {value, baseRadius, tipRadius, offset = 0} = params;
             const angle = valueToAngle(value);
 
             const baseCircleCenter = {

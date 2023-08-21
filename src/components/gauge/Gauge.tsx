@@ -1,31 +1,66 @@
-import React from 'react';
-import { useGauge } from '../../hooks/useGauge';
-import {defaultGaugeOptions} from "./defaultGaugeOptions";
-import {Eva} from "@eva-ics/webengine";
-import {useEvaState} from "@eva-ics/webengine-react";
+import React, {useEffect, useState} from 'react';
+import {useGauge} from '../../hooks/useGauge';
+import {GaugeParams} from "../../types";
 
-const Gauge = ({engine}:{engine:Eva}) => {
-    const state = useEvaState({ oid: "sensor:tests/temp",engine });
-    const value = state.value;
 
-    const {
-        diameter,
-        minValue,
-        maxValue,
-        startAngle,
-        endAngle,
-        numTicks,
-        offset,
-        arcStrokeWidth,
-        progressColor,
-        strokeLineCap,
-        tickColor,
-        tickLength,
-        baseRadius,
-        tipRadius,
-        needleColor,
-        needleOffset}=defaultGaugeOptions
+const defaultGaugeOptions = {
+    value: 0, // Indicator value
+    diameter: 300, // Gauge diameter value
+    minValue: 0, // Minimum value indicator
+    maxValue: 100, // Maximum value indicator
+    startAngle: 90, // Initial indicator position
+    endAngle: 270, // End indicator position
+    numTicks: 11, // Step of indicator values
+    offset: 8, // Distance of indicator line from the center
+    arcStrokeWidth: 24, // Indicator line thickness
+    progressColor: '#19e0e0', // Color of progress
+    strokeLineCap: 'round', // Type of progress line
+    tickColor: '#ccc', // Color of ticks
+    tickLength: 10, // Length of ticks
+    baseRadius: 12, // Radius of central point of arrow indicator
+    tipRadius: 2, // Radius of end point of arrow indicator
+    needleColor: '#374151', // Color of arrow indicator
+    needleOffset: 35, // Length of arrow indicator
+};
 
+const Gauge = ({
+                   value,
+                   diameter = defaultGaugeOptions.diameter,
+                   minValue,
+                   midValue,
+                   maxValue,
+                   startAngle = defaultGaugeOptions.startAngle,
+                   endAngle = defaultGaugeOptions.endAngle,
+                   numTicks = defaultGaugeOptions.numTicks,
+                   offset = defaultGaugeOptions.offset,
+                   arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
+                   progressColor = defaultGaugeOptions.progressColor,
+                   strokeLineCap = "round",
+                   tickColor = defaultGaugeOptions.tickColor,
+                   tickLength = defaultGaugeOptions.tickLength,
+                   baseRadius = defaultGaugeOptions.baseRadius,
+                   tipRadius = defaultGaugeOptions.tipRadius,
+                   needleColor = defaultGaugeOptions.needleColor,
+                   needleOffset = defaultGaugeOptions.needleOffset,
+               }: GaugeParams) => {
+    const [progressColorOfValue, setProgressColorOfValue] = useState("#329e11");
+
+
+    useEffect(() => {
+        switch (true) {
+            case value >= minValue && value < midValue:
+                setProgressColorOfValue("#329e11")
+                break
+            case value > midValue && value < maxValue:
+                setProgressColorOfValue("#dceb15")
+                break
+            case value >= maxValue:
+                setProgressColorOfValue("#c7472e")
+                break
+            default:
+                return
+        }
+    }, [value, progressColorOfValue, midValue, minValue, maxValue]);
 
     const {
         ticks,
@@ -44,7 +79,7 @@ const Gauge = ({engine}:{engine:Eva}) => {
         domain: [minValue, maxValue],
     });
 
-    const { tip, base, points } = getNeedleProps({
+    const {tip, base, points} = getNeedleProps({
         value,
         baseRadius,
         tipRadius,
@@ -73,7 +108,7 @@ const Gauge = ({engine}:{engine:Eva}) => {
                             endAngle: valueToAngle(value),
                         })}
                         fill="none"
-                        stroke={progressColor}
+                        stroke={progressColorOfValue}
                         strokeWidth={arcStrokeWidth}
                         strokeLinecap={strokeLineCap as "round" | "butt" | "square" | "inherit" | undefined}
                     />
@@ -83,11 +118,11 @@ const Gauge = ({engine}:{engine:Eva}) => {
                         <React.Fragment key={`tick-group-${angle}`}>
                             <line
                                 stroke={tickColor}
-                                {...getTickProps({ angle, length: tickLength })}
+                                {...getTickProps({angle, length: tickLength})}
                             />
                             <text
                                 className="text-default-color"
-                                {...getLabelProps({ angle, offset: 20 })}
+                                {...getLabelProps({angle, offset: 20})}
                             >
                                 {angleToValue(angle)}
                             </text>
@@ -95,11 +130,11 @@ const Gauge = ({engine}:{engine:Eva}) => {
                     ))}
                 </g>
                 <g id="needle">
-                    <circle className="middle-circle-color" {...base} r={24} />
+                    <circle className="middle-circle-color" {...base} r={24}/>
                     <circle fill={needleColor} {...base} />
                     <circle fill={needleColor} {...tip} />
-                    <polyline fill={needleColor} points={points} />
-                    <circle className="midpoint-color" {...base} r={4} />
+                    <polyline fill={needleColor} points={points}/>
+                    <circle className="midpoint-color" {...base} r={4}/>
                 </g>
             </svg>
         </div>
