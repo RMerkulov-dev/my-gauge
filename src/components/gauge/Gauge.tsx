@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGauge } from '../../hooks/useGauge';
-import {defaultGaugeOptions} from "./options";
+import {defaultGaugeOptions} from "./defaultGaugeOptions";
 
 const Gauge = () => {
 
