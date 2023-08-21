@@ -2,7 +2,7 @@ import {useCallback, useMemo} from "react";
 import {degreesToRadians, makeTickMarks, polarToCartesian} from "../libs";
 import {GetArcPropsParams, GetLabelPropsParams, GetNeedleParams, GetTickPropsParams, UseGaugeParams} from "../types";
 
-export function useGauge(params: UseGaugeParams) {
+export const useGauge=(params: UseGaugeParams)=> {
     const { startAngle, endAngle, numTicks, diameter, domain } = params;
     const radius = diameter / 2;
     const [minValue, maxValue] = domain;
