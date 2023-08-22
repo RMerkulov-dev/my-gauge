@@ -1,9 +1,13 @@
 import React from 'react';
 import {GaugeConstructor, GaugeTypeNames} from "./types";
 import {GaugeLight, GaugeMinimal, GaugeSphere, GaugeStandard} from "./index";
+import {useEvaState} from "@eva-ics/webengine-react";
 
 
-const GaugeComponent = ({type, value, minValue, maxValue, engine}: GaugeConstructor) => {
+const GaugeComponent = ({type, minValue, maxValue, engine}: GaugeConstructor) => {
+    const state = useEvaState({oid: "sensor:tests/temp", engine});
+    const value = state.value;
+   
     return (
         <div>
             {!type && <GaugeStandard engine={engine} value={value} minValue={minValue} maxValue={maxValue}/>}

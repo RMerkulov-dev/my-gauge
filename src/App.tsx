@@ -6,13 +6,11 @@ import {GaugeTypeNames} from "./components/gauge/types";
 
 
 const App = ({engine}: { engine: Eva }) => {
-    const state = useEvaState({oid: "sensor:tests/temp", engine});
-    const value = state.value;
 
     return (
         <>
             <GaugeComponent type={GaugeTypeNames.LIGHT} engine={engine} minValue={0} warnValue={30} critValue={65}
-                            maxValue={95} value={value}/>
+                            maxValue={95}/>
         </>
     )
 }

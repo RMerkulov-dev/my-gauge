@@ -57,7 +57,7 @@ export enum GaugeTypeNames {
 export interface GaugeParams {
     engine?: Eva;
     oid?: string;
-    value: number;
+    value?: number;
     diameter?: number,
     minValue: number,
     maxValue: number,
