@@ -19,9 +19,9 @@ const App = ({engine}: { engine: Eva }) => {
                 <p>1</p>
                 <GaugeSphere value={value} minValue={0} maxValue={80}/>
                 <p>2</p>
-                <ModernGauge value={value} warnValue={30} critValue={60} minValue={0} maxValue={80}/>
+                <ModernGauge value={value} critValue={60} minValue={0} maxValue={80}/>
                 <p>3</p>
-                <LightGauge value={value} minValue={0} maxValue={80}/>
+                <LightGauge value={value} warnValue={30} minValue={0} maxValue={80}/>
 
             </div>
         </>
