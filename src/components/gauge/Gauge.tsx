@@ -15,11 +15,11 @@ const defaultGaugeOptions = {
     arcStrokeWidth: 24, // Indicator line thickness
     progressColor: ClassNameColors.GREEN, // Color of progress
     strokeLineCap: StrokeLineCamp.ROUND, // Type of progress line
-    tickColor: '#ccc', // Color of ticks
+    tickColor: ClassNameColors.TICK, // Color of ticks
     tickLength: 10, // Length of ticks
     baseRadius: 12, // Radius of central point of arrow indicator
     tipRadius: 2, // Radius of end point of arrow indicator
-    needleColor: '#374151', // Color of arrow indicator
+    needleColor: ClassNameColors.NEEDLE, // Color of arrow indicator
     needleOffset: 35, // Length of arrow indicator
 };
 
@@ -35,9 +35,7 @@ const Gauge = ({
                    numTicks = defaultGaugeOptions.numTicks,
                    offset = defaultGaugeOptions.offset,
                    arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
-                   progressColor = defaultGaugeOptions.progressColor,
                    strokeLineCap = StrokeLineCamp.ROUND,
-                   tickColor = defaultGaugeOptions.tickColor,
                    tickLength = defaultGaugeOptions.tickLength,
                    baseRadius = defaultGaugeOptions.baseRadius,
                    tipRadius = defaultGaugeOptions.tipRadius,
@@ -111,7 +109,7 @@ const Gauge = ({
                         endAngle,
                     })}
                     fill="none"
-                    className="stroke-default-color"
+                    className="progress-background-color"
                     strokeWidth={arcStrokeWidth}
                     strokeLinecap={strokeLineCap}
                 />
@@ -132,7 +130,7 @@ const Gauge = ({
                     {ticks.map((angle) => (
                         <React.Fragment key={`tick-group-${angle}`}>
                             <line
-                                stroke={tickColor}
+                                className={ClassNameColors.TICK}
                                 {...getTickProps({angle, length: tickLength})}
                             />
                             <text
@@ -145,10 +143,10 @@ const Gauge = ({
                     ))}
                 </g>
                 <g id="needle">
-                    <circle className="middle-circle-color" {...base} r={24}/>
-                    <circle fill={needleColor} {...base} />
-                    <circle fill={needleColor} {...tip} />
-                    <polyline fill={needleColor} points={points}/>
+                    <circle className="middle-base-color" {...base} r={24}/>
+                    <circle className={needleColor} {...base} />
+                    <circle className={needleColor} {...tip} />
+                    <polyline className={needleColor} points={points}/>
                     <circle className="midpoint-color" {...base} r={4}/>
                 </g>
             </svg>

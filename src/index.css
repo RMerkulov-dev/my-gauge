@@ -11,7 +11,7 @@
     padding: 30px;
 }
 
-.stroke-default-color {
+.progress-background-color {
     stroke: #f7fafc;
 }
 
@@ -21,12 +21,20 @@
     fill: #6b7280;
 }
 
-.middle-circle-color {
+.middle-base-color {
     fill: #d1d5db;
 }
 
 .midpoint-color {
-    fill: #d1d5db;
+    fill: #ccc;
+}
+
+.tick-color {
+    stroke: #ccc;
+}
+
+.needle-color {
+    fill: #374151;
 }
 
 .progress-color {

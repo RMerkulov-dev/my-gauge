@@ -42,6 +42,8 @@ export enum ClassNameColors {
     GREEN = "progress-color",
     YELLOW = "warning-progress-color",
     RED = "critical-progress-color",
+    TICK = "tick-color",
+    NEEDLE = "needle-color"
 }
 
 export interface GaugeParams {
