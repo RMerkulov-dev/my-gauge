@@ -2,7 +2,6 @@ import React from 'react';
 import {Eva} from "@eva-ics/webengine";
 import {Gauge} from "./components/gauge/index";
 
-
 const App = ({engine}: { engine: Eva }) => {
 
     return (

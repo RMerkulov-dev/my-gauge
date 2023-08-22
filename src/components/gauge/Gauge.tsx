@@ -38,12 +38,29 @@ const Gauge = ({
 
     const SelectedGauge = GAUGES[type];
 
+    const gaugeProps = {
+        engine,
+        value: stateValue,
+        maxValue,
+        minValue,
+        warnValue,
+        critValue,
+        diameter,
+        startAngle,
+        endAngle,
+        numTicks,
+        offset,
+        arcStrokeWidth,
+        strokeLineCap,
+        tickLength,
+        baseRadius,
+        tipRadius,
+        middleRadius,
+        needleOffset,
+    };
+
     return (
-        <SelectedGauge engine={engine} value={stateValue} maxValue={maxValue} minValue={minValue} diameter={diameter}
-                       warnValue={warnValue} critValue={critValue} startAngle={startAngle} endAngle={endAngle}
-                       numTicks={numTicks} offset={offset} arcStrokeWidth={arcStrokeWidth} strokeLineCap={strokeLineCap}
-                       tickLength={tickLength} baseRadius={baseRadius} tipRadius={tipRadius} middleRadius={middleRadius}
-                       needleOffset={needleOffset}/>
+        <SelectedGauge {...gaugeProps}/>
     );
 };
 
