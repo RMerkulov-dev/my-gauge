@@ -2,44 +2,26 @@ import React, {useEffect, useState} from 'react';
 import {useGauge} from '../hooks/useGauge';
 import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../types";
 import {ItemValue} from "@eva-ics/webengine-react";
-
-
-const defaultGaugeOptions = {
-    value: 0, // Indicator value
-    diameter: 150, // GaugeStandard diameter value
-    minValue: 0, // Minimum value indicator
-    maxValue: 100, // Maximum value indicator
-    startAngle: 90, // Initial indicator position
-    endAngle: 270, // End indicator position
-    numTicks: 7, // Step of indicator values
-    offset: -40, // Distance of indicator line from the center
-    arcStrokeWidth: 24, // Indicator line thickness
-    strokeLineCap: StrokeLineCamp.INHERIT, // Type of progress line
-    tickLength: 10, // Length of ticks
-    baseRadius: 5, // Radius of central point of arrow indicator
-    middleRadius: 15, //Radius of middle circle of arrow indicator
-    tipRadius: 2, // Radius of end point of arrow indicator
-    needleOffset: 30, // Length of arrow indicator
-};
+import {minimalGaugeOptions} from "../options";
 
 const GaugeMinimal = ({
-                          value = defaultGaugeOptions.value,
-                          diameter = defaultGaugeOptions.diameter,
+                          value = minimalGaugeOptions.value,
+                          diameter = minimalGaugeOptions.diameter,
                           minValue,
                           warnValue,
                           critValue,
                           maxValue,
-                          startAngle = defaultGaugeOptions.startAngle,
-                          endAngle = defaultGaugeOptions.endAngle,
-                          numTicks = defaultGaugeOptions.numTicks,
-                          offset = defaultGaugeOptions.offset,
-                          arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
-                          strokeLineCap = defaultGaugeOptions.strokeLineCap,
-                          tickLength = defaultGaugeOptions.tickLength,
-                          baseRadius = defaultGaugeOptions.baseRadius,
-                          tipRadius = defaultGaugeOptions.tipRadius,
-                          needleOffset = defaultGaugeOptions.needleOffset,
-                          middleRadius = defaultGaugeOptions.middleRadius,
+                          startAngle = minimalGaugeOptions.startAngle,
+                          endAngle = minimalGaugeOptions.endAngle,
+                          numTicks = minimalGaugeOptions.numTicks,
+                          offset = minimalGaugeOptions.offset,
+                          arcStrokeWidth = minimalGaugeOptions.arcStrokeWidth,
+                          strokeLineCap = minimalGaugeOptions.strokeLineCap,
+                          tickLength = minimalGaugeOptions.tickLength,
+                          baseRadius = minimalGaugeOptions.baseRadius,
+                          tipRadius = minimalGaugeOptions.tipRadius,
+                          needleOffset = minimalGaugeOptions.needleOffset,
+                          middleRadius = minimalGaugeOptions.middleRadius,
                           engine
                       }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
