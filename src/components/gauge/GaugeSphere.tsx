@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useGauge} from '../../hooks/useGauge';
 import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../../types";
+import {ItemValue} from "@eva-ics/webengine-react";
 
 
 const defaultGaugeOptions = {
@@ -38,7 +39,8 @@ const GaugeSphere = ({
                          baseRadius = defaultGaugeOptions.baseRadius,
                          tipRadius = defaultGaugeOptions.tipRadius,
                          needleOffset = defaultGaugeOptions.needleOffset,
-                         middleRadius = defaultGaugeOptions.middleRadius
+                         middleRadius = defaultGaugeOptions.middleRadius,
+                         engine
                      }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
@@ -98,56 +100,63 @@ const GaugeSphere = ({
     });
 
     return (
-        <div className="gauge-wrapper">
-            <svg {...getSVGProps()} className="gauge-preview">
-                <path
-                    {...getArcProps({
-                        offset,
-                        startAngle,
-                        endAngle,
-                    })}
-                    fill="none"
-                    className="progress-background-color"
-                    strokeWidth={arcStrokeWidth}
-                    strokeLinecap={strokeLineCap}
-                />
-                {value > minValue && (
+        <div className="gauge-container">
+            <div className="gauge-wrapper">
+                <svg {...getSVGProps()} className="gauge-preview">
                     <path
                         {...getArcProps({
                             offset,
                             startAngle,
-                            endAngle: valueToAngle(value),
+                            endAngle,
                         })}
                         fill="none"
-                        className={progressColorOfValue}
+                        className="progress-background-color"
                         strokeWidth={arcStrokeWidth}
                         strokeLinecap={strokeLineCap}
                     />
-                )}
-                <g id="ticks">
-                    {ticks.map((angle) => (
-                        <React.Fragment key={`tick-group-${angle}`}>
-                            <line
-                                className={ClassNameColors.TICK}
-                                {...getTickProps({angle, length: tickLength})}
-                            />
-                            <text
-                                className="text-default-color"
-                                {...getLabelProps({angle, offset: 20})}
-                            >
-                                {angleToValue(angle)}
-                            </text>
-                        </React.Fragment>
-                    ))}
-                </g>
-                <g id="needle">
-                    <circle className="middle-base-color" {...base} r={middleRadius}/>
-                    <circle className={ClassNameColors.NEEDLE} {...base} />
-                    <circle className={ClassNameColors.NEEDLE} {...tip} />
-                    <polyline className={ClassNameColors.NEEDLE} points={points}/>
-                    <circle className="midpoint-color" {...base} r={4}/>
-                </g>
-            </svg>
+                    {value > minValue && (
+                        <path
+                            {...getArcProps({
+                                offset,
+                                startAngle,
+                                endAngle: valueToAngle(value),
+                            })}
+                            fill="none"
+                            className={progressColorOfValue}
+                            strokeWidth={arcStrokeWidth}
+                            strokeLinecap={strokeLineCap}
+                        />
+                    )}
+                    <g id="ticks">
+                        {ticks.map((angle) => (
+                            <React.Fragment key={`tick-group-${angle}`}>
+                                <line
+                                    className={ClassNameColors.TICK}
+                                    {...getTickProps({angle, length: tickLength})}
+                                />
+                                <text
+                                    className="text-default-color"
+                                    {...getLabelProps({angle, offset: 20})}
+                                >
+                                    {angleToValue(angle)}
+                                </text>
+                            </React.Fragment>
+                        ))}
+                    </g>
+                    <g id="needle">
+                        <circle className="middle-base-color" {...base} r={middleRadius}/>
+                        <circle className={ClassNameColors.NEEDLE} {...base} />
+                        <circle className={ClassNameColors.NEEDLE} {...tip} />
+                        <polyline className={ClassNameColors.NEEDLE} points={points}/>
+                        <circle className="midpoint-color" {...base} r={4}/>
+                    </g>
+                </svg>
+                <div className="gauge-value">
+                    {/*@ts-ignore*/}
+                    {value ? <ItemValue engine={engine} oid="sensor:tests/temp" digits="2" units="C"/> : ""}
+                </div>
+            </div>
+
         </div>
     );
 };

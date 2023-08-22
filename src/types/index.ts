@@ -48,6 +48,7 @@ export enum ClassNameColors {
 
 export interface GaugeParams {
     engine?: Eva;
+    oid?: string;
     value: number;
     diameter?: number,
     minValue: number,

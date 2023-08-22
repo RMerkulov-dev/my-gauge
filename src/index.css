@@ -1,14 +1,29 @@
+.gauge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .gauge-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     height: 100%;
+    flex-direction: column;
 }
 
 .gauge-preview {
     max-width: 100%;
     overflow: visible;
     padding: 30px;
+}
+
+.gauge-value {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    fill: #6b7280;
 }
 
 .progress-background-color {

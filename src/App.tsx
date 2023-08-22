@@ -14,14 +14,15 @@ const App = ({engine}: { engine: Eva }) => {
     return (
         <>
             <p>Main</p>
-            <Gauge engine={engine} minValue={0} warnValue={30} critValue={65} maxValue={95} value={value}/>
+            <Gauge engine={engine} minValue={0} warnValue={30} critValue={65} maxValue={95} value={value}
+            />
             <div style={{display: "flex", marginTop: "50px"}}>
                 <p>1</p>
-                <GaugeSphere value={value} minValue={0} maxValue={80}/>
+                <GaugeSphere engine={engine} value={value} minValue={0} maxValue={80}/>
                 <p>2</p>
-                <ModernGauge value={value} critValue={60} minValue={0} maxValue={80}/>
+                <ModernGauge engine={engine} value={value} critValue={60} minValue={0} maxValue={80}/>
                 <p>3</p>
-                <LightGauge value={value} warnValue={30} minValue={0} maxValue={80}/>
+                <LightGauge engine={engine} value={value} warnValue={30} minValue={0} maxValue={80}/>
 
             </div>
         </>
