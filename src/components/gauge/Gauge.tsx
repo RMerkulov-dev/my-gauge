@@ -6,26 +6,10 @@ import {GaugeLight, GaugeMinimal, GaugeSphere, GaugeStandard} from "./index";
 
 const Gauge = ({
                    type = GaugeType.STANDARD,
-                   minValue,
-                   maxValue,
-                   warnValue,
-                   critValue,
                    engine,
-                   value,
-                   diameter,
-                   startAngle,
-                   endAngle,
-                   numTicks,
-                   offset,
-                   arcStrokeWidth,
-                   strokeLineCap,
-                   tickLength,
-                   baseRadius,
-                   tipRadius,
-                   middleRadius,
-                   needleOffset,
-
+                   ...rest
                }: GaugeConstructor) => {
+    
     const GAUGES = {
         [GaugeType.STANDARD]: GaugeStandard,
         [GaugeType.SPHERE]: GaugeSphere,
@@ -34,33 +18,13 @@ const Gauge = ({
     };
 
     const state = useEvaState({oid: "sensor:tests/temp", engine});
-    const stateValue = state.value;
+    const value = state.value;
 
     const SelectedGauge = GAUGES[type];
 
-    const gaugeProps = {
-        engine,
-        value: stateValue,
-        maxValue,
-        minValue,
-        warnValue,
-        critValue,
-        diameter,
-        startAngle,
-        endAngle,
-        numTicks,
-        offset,
-        arcStrokeWidth,
-        strokeLineCap,
-        tickLength,
-        baseRadius,
-        tipRadius,
-        middleRadius,
-        needleOffset,
-    };
-
     return (
-        <SelectedGauge {...gaugeProps}/>
+        // @ts-ignore
+        <SelectedGauge value={value} engine={engine} type={type} {...rest}/>
     );
 };
 
