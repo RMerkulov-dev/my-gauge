@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useGauge} from '../../hooks/useGauge';
-import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../../types";
+import {useGauge} from '../hooks/useGauge';
+import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../types";
 import {ItemValue} from "@eva-ics/webengine-react";
 
 
 const defaultGaugeOptions = {
     value: 0, // Indicator value
-    diameter: 150, // Gauge diameter value
+    diameter: 150, // GaugeStandard diameter value
     minValue: 0, // Minimum value indicator
     maxValue: 100, // Maximum value indicator
     startAngle: 90, // Initial indicator position
@@ -22,26 +22,26 @@ const defaultGaugeOptions = {
     needleOffset: 30, // Length of arrow indicator
 };
 
-const ModernGauge = ({
-                         value = defaultGaugeOptions.value,
-                         diameter = defaultGaugeOptions.diameter,
-                         minValue,
-                         warnValue,
-                         critValue,
-                         maxValue,
-                         startAngle = defaultGaugeOptions.startAngle,
-                         endAngle = defaultGaugeOptions.endAngle,
-                         numTicks = defaultGaugeOptions.numTicks,
-                         offset = defaultGaugeOptions.offset,
-                         arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
-                         strokeLineCap = defaultGaugeOptions.strokeLineCap,
-                         tickLength = defaultGaugeOptions.tickLength,
-                         baseRadius = defaultGaugeOptions.baseRadius,
-                         tipRadius = defaultGaugeOptions.tipRadius,
-                         needleOffset = defaultGaugeOptions.needleOffset,
-                         middleRadius = defaultGaugeOptions.middleRadius,
-                         engine
-                     }: GaugeParams) => {
+const GaugeMinimal = ({
+                          value = defaultGaugeOptions.value,
+                          diameter = defaultGaugeOptions.diameter,
+                          minValue,
+                          warnValue,
+                          critValue,
+                          maxValue,
+                          startAngle = defaultGaugeOptions.startAngle,
+                          endAngle = defaultGaugeOptions.endAngle,
+                          numTicks = defaultGaugeOptions.numTicks,
+                          offset = defaultGaugeOptions.offset,
+                          arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
+                          strokeLineCap = defaultGaugeOptions.strokeLineCap,
+                          tickLength = defaultGaugeOptions.tickLength,
+                          baseRadius = defaultGaugeOptions.baseRadius,
+                          tipRadius = defaultGaugeOptions.tipRadius,
+                          needleOffset = defaultGaugeOptions.needleOffset,
+                          middleRadius = defaultGaugeOptions.middleRadius,
+                          engine
+                      }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
     if (value > maxValue) {
@@ -160,4 +160,4 @@ const ModernGauge = ({
     );
 };
 
-export default ModernGauge;
+export default GaugeMinimal;

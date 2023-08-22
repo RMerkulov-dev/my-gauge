@@ -46,6 +46,14 @@ export enum ClassNameColors {
     NEEDLE = "needle-color"
 }
 
+export enum GaugeTypeNames {
+    STANDARD = "standard",
+    SPHERE = "sphere",
+    MINIMAL = "minimal",
+    LIGHT = "light"
+}
+
+
 export interface GaugeParams {
     engine?: Eva;
     oid?: string;
@@ -68,3 +76,6 @@ export interface GaugeParams {
     middleRadius?: number
 }
 
+export interface GaugeConstructor extends GaugeParams {
+    type?: GaugeTypeNames;
+}
