@@ -16,6 +16,7 @@ const defaultGaugeOptions = {
     strokeLineCap: StrokeLineCamp.ROUND, // Type of progress line
     tickLength: 10, // Length of ticks
     baseRadius: 12, // Radius of central point of arrow indicator
+    middleRadius: 24, //Radius of middle circle of arrow indicator
     tipRadius: 2, // Radius of end point of arrow indicator
     needleOffset: 35, // Length of arrow indicator
 };
@@ -37,9 +38,10 @@ const Gauge = ({
                    baseRadius = defaultGaugeOptions.baseRadius,
                    tipRadius = defaultGaugeOptions.tipRadius,
                    needleOffset = defaultGaugeOptions.needleOffset,
+                   middleRadius = defaultGaugeOptions.middleRadius
                }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
-   
+
     if (value > maxValue) {
         value = maxValue
     }
@@ -139,7 +141,7 @@ const Gauge = ({
                     ))}
                 </g>
                 <g id="needle">
-                    <circle className="middle-base-color" {...base} r={24}/>
+                    <circle className="middle-base-color" {...base} r={middleRadius}/>
                     <circle className={ClassNameColors.NEEDLE} {...base} />
                     <circle className={ClassNameColors.NEEDLE} {...tip} />
                     <polyline className={ClassNameColors.NEEDLE} points={points}/>
