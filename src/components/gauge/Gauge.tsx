@@ -9,7 +9,7 @@ const Gauge = ({
                    engine,
                    ...rest
                }: GaugeConstructor) => {
-    
+
     const GAUGES = {
         [GaugeType.STANDARD]: GaugeStandard,
         [GaugeType.SPHERE]: GaugeSphere,
@@ -23,8 +23,8 @@ const Gauge = ({
     const SelectedGauge = GAUGES[type];
 
     return (
-        // @ts-ignore
-        <SelectedGauge value={value} engine={engine} type={type} {...rest}/>
+
+        <SelectedGauge value={value} engine={engine}  {...rest}/>
     );
 };
 
