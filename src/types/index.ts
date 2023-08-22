@@ -32,8 +32,10 @@ export interface GetLabelPropsParams {
 }
 
 export enum StrokeLineCamp {
+    BUTT = "butt",
     ROUND = "round",
     SQUARE = "square",
+    INHERIT = 'inherit'
 }
 
 export enum ClassNameColors {
