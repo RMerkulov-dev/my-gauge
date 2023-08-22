@@ -13,13 +13,10 @@ const defaultGaugeOptions = {
     numTicks: 11, // Step of indicator values
     offset: 8, // Distance of indicator line from the center
     arcStrokeWidth: 24, // Indicator line thickness
-    progressColor: ClassNameColors.GREEN, // Color of progress
     strokeLineCap: StrokeLineCamp.ROUND, // Type of progress line
-    tickColor: ClassNameColors.TICK, // Color of ticks
     tickLength: 10, // Length of ticks
     baseRadius: 12, // Radius of central point of arrow indicator
     tipRadius: 2, // Radius of end point of arrow indicator
-    needleColor: ClassNameColors.NEEDLE, // Color of arrow indicator
     needleOffset: 35, // Length of arrow indicator
 };
 
@@ -35,15 +32,14 @@ const Gauge = ({
                    numTicks = defaultGaugeOptions.numTicks,
                    offset = defaultGaugeOptions.offset,
                    arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
-                   strokeLineCap = StrokeLineCamp.ROUND,
+                   strokeLineCap = defaultGaugeOptions.strokeLineCap,
                    tickLength = defaultGaugeOptions.tickLength,
                    baseRadius = defaultGaugeOptions.baseRadius,
                    tipRadius = defaultGaugeOptions.tipRadius,
-                   needleColor = defaultGaugeOptions.needleColor,
                    needleOffset = defaultGaugeOptions.needleOffset,
                }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
-    console.log(progressColorOfValue)
+   
     if (value > maxValue) {
         value = maxValue
     }
@@ -144,9 +140,9 @@ const Gauge = ({
                 </g>
                 <g id="needle">
                     <circle className="middle-base-color" {...base} r={24}/>
-                    <circle className={needleColor} {...base} />
-                    <circle className={needleColor} {...tip} />
-                    <polyline className={needleColor} points={points}/>
+                    <circle className={ClassNameColors.NEEDLE} {...base} />
+                    <circle className={ClassNameColors.NEEDLE} {...tip} />
+                    <polyline className={ClassNameColors.NEEDLE} points={points}/>
                     <circle className="midpoint-color" {...base} r={4}/>
                 </g>
             </svg>
