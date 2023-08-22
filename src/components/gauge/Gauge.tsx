@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useGauge} from '../../hooks/useGauge';
-import {Colors, GaugeParams, StrokeLineCamp} from "../../types";
+import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../../types";
 
 
 const defaultGaugeOptions = {
@@ -13,8 +13,8 @@ const defaultGaugeOptions = {
     numTicks: 11, // Step of indicator values
     offset: 8, // Distance of indicator line from the center
     arcStrokeWidth: 24, // Indicator line thickness
-    progressColor: '#19e0e0', // Color of progress
-    strokeLineCap: 'round', // Type of progress line
+    progressColor: ClassNameColors.GREEN, // Color of progress
+    strokeLineCap: StrokeLineCamp.ROUND, // Type of progress line
     tickColor: '#ccc', // Color of ticks
     tickLength: 10, // Length of ticks
     baseRadius: 12, // Radius of central point of arrow indicator
@@ -44,36 +44,37 @@ const Gauge = ({
                    needleColor = defaultGaugeOptions.needleColor,
                    needleOffset = defaultGaugeOptions.needleOffset,
                }: GaugeParams) => {
-    const [progressColorOfValue, setProgressColorOfValue] = useState(Colors.GREEN);
-
+    const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
+    console.log(progressColorOfValue)
     if (value > maxValue) {
         value = maxValue
     }
 
     useEffect(() => {
         if (warnValue === undefined && critValue === undefined) {
-            setProgressColorOfValue(Colors.GREEN);
+            setProgressColorOfValue(ClassNameColors.GREEN);
         } else if (critValue === undefined) {
             // @ts-ignore
-            setProgressColorOfValue(value < warnValue ? Colors.GREEN : Colors.YELLOW);
+            setProgressColorOfValue(value < warnValue ? ClassNameColors.GREEN : ClassNameColors.YELLOW);
         } else if (warnValue === undefined) {
-            setProgressColorOfValue(value < critValue ? Colors.GREEN : Colors.RED);
+            setProgressColorOfValue(value < critValue ? ClassNameColors.GREEN : ClassNameColors.RED);
         } else {
             switch (true) {
                 case value >= minValue && value < warnValue:
-                    setProgressColorOfValue(Colors.GREEN);
+                    setProgressColorOfValue(ClassNameColors.GREEN);
                     break;
-                case value > warnValue && value < maxValue:
-                    setProgressColorOfValue(Colors.YELLOW);
+                case value > warnValue && value < critValue:
+                    setProgressColorOfValue(ClassNameColors.YELLOW);
                     break;
                 case value >= critValue:
-                    setProgressColorOfValue(Colors.RED);
+                    console.log("true", value)
+                    setProgressColorOfValue(ClassNameColors.RED);
                     break;
                 default:
                     return;
             }
         }
-    }, [value, warnValue, critValue, minValue, maxValue]);
+    }, [value, warnValue, critValue, minValue, maxValue, progressColorOfValue]);
 
 
     const {
@@ -122,7 +123,7 @@ const Gauge = ({
                             endAngle: valueToAngle(value),
                         })}
                         fill="none"
-                        stroke={progressColorOfValue}
+                        className={progressColorOfValue}
                         strokeWidth={arcStrokeWidth}
                         strokeLinecap={strokeLineCap}
                     />
