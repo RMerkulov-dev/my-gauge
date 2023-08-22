@@ -66,3 +66,4 @@ export interface GaugeParams {
     needleOffset?: number,
     middleRadius?: number
 }
+

@@ -21,25 +21,25 @@ const defaultGaugeOptions = {
     needleOffset: 10, // Length of arrow indicator
 };
 
-const GaugeVariant_1 = ({
-                            value = defaultGaugeOptions.value,
-                            diameter = defaultGaugeOptions.diameter,
-                            minValue,
-                            warnValue,
-                            critValue,
-                            maxValue,
-                            startAngle = defaultGaugeOptions.startAngle,
-                            endAngle = defaultGaugeOptions.endAngle,
-                            numTicks = defaultGaugeOptions.numTicks,
-                            offset = defaultGaugeOptions.offset,
-                            arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
-                            strokeLineCap = defaultGaugeOptions.strokeLineCap,
-                            tickLength = defaultGaugeOptions.tickLength,
-                            baseRadius = defaultGaugeOptions.baseRadius,
-                            tipRadius = defaultGaugeOptions.tipRadius,
-                            needleOffset = defaultGaugeOptions.needleOffset,
-                            middleRadius = defaultGaugeOptions.middleRadius
-                        }: GaugeParams) => {
+const GaugeSphere = ({
+                         value = defaultGaugeOptions.value,
+                         diameter = defaultGaugeOptions.diameter,
+                         minValue,
+                         warnValue,
+                         critValue,
+                         maxValue,
+                         startAngle = defaultGaugeOptions.startAngle,
+                         endAngle = defaultGaugeOptions.endAngle,
+                         numTicks = defaultGaugeOptions.numTicks,
+                         offset = defaultGaugeOptions.offset,
+                         arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
+                         strokeLineCap = defaultGaugeOptions.strokeLineCap,
+                         tickLength = defaultGaugeOptions.tickLength,
+                         baseRadius = defaultGaugeOptions.baseRadius,
+                         tipRadius = defaultGaugeOptions.tipRadius,
+                         needleOffset = defaultGaugeOptions.needleOffset,
+                         middleRadius = defaultGaugeOptions.middleRadius
+                     }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
     if (value > maxValue) {
@@ -152,4 +152,4 @@ const GaugeVariant_1 = ({
     );
 };
 
-export default GaugeVariant_1;
+export default GaugeSphere;

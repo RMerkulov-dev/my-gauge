@@ -5,13 +5,13 @@ import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../../types";
 
 const defaultGaugeOptions = {
     value: 0, // Indicator value
-    diameter: 300, // Gauge diameter value
+    diameter: 200, // Gauge diameter value
     minValue: 0, // Minimum value indicator
     maxValue: 100, // Maximum value indicator
     startAngle: 90, // Initial indicator position
     endAngle: 270, // End indicator position
-    numTicks: 11, // Step of indicator values
-    offset: 8, // Distance of indicator line from the center
+    numTicks: 10, // Step of indicator values
+    offset: 5, // Distance of indicator line from the center
     arcStrokeWidth: 24, // Indicator line thickness
     strokeLineCap: StrokeLineCamp.ROUND, // Type of progress line
     tickLength: 10, // Length of ticks
@@ -20,6 +20,7 @@ const defaultGaugeOptions = {
     tipRadius: 2, // Radius of end point of arrow indicator
     needleOffset: 35, // Length of arrow indicator
 };
+
 
 const Gauge = ({
                    value = defaultGaugeOptions.value,
