@@ -12,7 +12,6 @@ const Gauge = ({type = GaugeType.STANDARD, minValue, maxValue, engine}: GaugeCon
         [GaugeType.LIGHT]: GaugeLight,
     };
 
-
     const state = useEvaState({oid: "sensor:tests/temp", engine});
     const value = state.value;
 
