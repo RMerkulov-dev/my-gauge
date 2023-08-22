@@ -15,7 +15,7 @@ const Gauge = ({type = GaugeType.STANDARD, minValue, maxValue, engine}: GaugeCon
     const state = useEvaState({oid: "sensor:tests/temp", engine});
     const value = state.value;
 
-    const SelectedGauge = GAUGES[type] || GaugeStandard;
+    const SelectedGauge = GAUGES[type];
 
     return (
         <SelectedGauge engine={engine} value={value} maxValue={maxValue} minValue={minValue}/>
