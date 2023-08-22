@@ -46,7 +46,7 @@ export enum ClassNameColors {
     NEEDLE = "needle-color"
 }
 
-export enum GaugeTypeNames {
+export enum GaugeType {
     STANDARD = "standard",
     SPHERE = "sphere",
     MINIMAL = "minimal",
@@ -77,5 +77,5 @@ export interface GaugeParams {
 }
 
 export interface GaugeConstructor extends GaugeParams {
-    type?: GaugeTypeNames;
+    type?: GaugeType;
 }
