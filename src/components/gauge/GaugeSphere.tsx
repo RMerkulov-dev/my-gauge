@@ -8,39 +8,38 @@ const defaultGaugeOptions = {
     diameter: 200, // Gauge diameter value
     minValue: 0, // Minimum value indicator
     maxValue: 100, // Maximum value indicator
-    startAngle: 90, // Initial indicator position
-    endAngle: 270, // End indicator position
-    numTicks: 10, // Step of indicator values
-    offset: 5, // Distance of indicator line from the center
+    startAngle: 45, // Initial indicator position
+    endAngle: 315, // End indicator position
+    numTicks: 5, // Step of indicator values
+    offset: -50, // Distance of indicator line from the center
     arcStrokeWidth: 24, // Indicator line thickness
-    strokeLineCap: StrokeLineCamp.ROUND, // Type of progress line
+    strokeLineCap: StrokeLineCamp.BUTT, // Type of progress line
     tickLength: 10, // Length of ticks
-    baseRadius: 12, // Radius of central point of arrow indicator
-    middleRadius: 24, //Radius of middle circle of arrow indicator
+    baseRadius: 6, // Radius of central point of arrow indicator
+    middleRadius: 14, //Radius of middle circle of arrow indicator
     tipRadius: 2, // Radius of end point of arrow indicator
-    needleOffset: 35, // Length of arrow indicator
+    needleOffset: 10, // Length of arrow indicator
 };
 
-
-const Gauge = ({
-                   value = defaultGaugeOptions.value,
-                   diameter = defaultGaugeOptions.diameter,
-                   minValue,
-                   warnValue,
-                   critValue,
-                   maxValue,
-                   startAngle = defaultGaugeOptions.startAngle,
-                   endAngle = defaultGaugeOptions.endAngle,
-                   numTicks = defaultGaugeOptions.numTicks,
-                   offset = defaultGaugeOptions.offset,
-                   arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
-                   strokeLineCap = defaultGaugeOptions.strokeLineCap,
-                   tickLength = defaultGaugeOptions.tickLength,
-                   baseRadius = defaultGaugeOptions.baseRadius,
-                   tipRadius = defaultGaugeOptions.tipRadius,
-                   needleOffset = defaultGaugeOptions.needleOffset,
-                   middleRadius = defaultGaugeOptions.middleRadius
-               }: GaugeParams) => {
+const GaugeSphere = ({
+                         value = defaultGaugeOptions.value,
+                         diameter = defaultGaugeOptions.diameter,
+                         minValue,
+                         warnValue,
+                         critValue,
+                         maxValue,
+                         startAngle = defaultGaugeOptions.startAngle,
+                         endAngle = defaultGaugeOptions.endAngle,
+                         numTicks = defaultGaugeOptions.numTicks,
+                         offset = defaultGaugeOptions.offset,
+                         arcStrokeWidth = defaultGaugeOptions.arcStrokeWidth,
+                         strokeLineCap = defaultGaugeOptions.strokeLineCap,
+                         tickLength = defaultGaugeOptions.tickLength,
+                         baseRadius = defaultGaugeOptions.baseRadius,
+                         tipRadius = defaultGaugeOptions.tipRadius,
+                         needleOffset = defaultGaugeOptions.needleOffset,
+                         middleRadius = defaultGaugeOptions.middleRadius
+                     }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
     if (value > maxValue) {
@@ -153,4 +152,4 @@ const Gauge = ({
     );
 };
 
-export default Gauge;
+export default GaugeSphere;
