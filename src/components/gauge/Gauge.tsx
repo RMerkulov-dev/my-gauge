@@ -59,13 +59,17 @@ const Gauge = ({
 
     switch (type) {
         case GaugeType.SPHERE:
-            return <GaugeSphere oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+            return <GaugeSphere oid={oid} value={value} engine={engine} minValue={minValue}
+                                maxValue={maxValue} {...rest} />;
         case GaugeType.LIGHT:
-            return <GaugeLight oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+            return <GaugeLight oid={oid} value={value} engine={engine} minValue={minValue}
+                               maxValue={maxValue} {...rest} />;
         case GaugeType.MINIMAL:
-            return <GaugeMinimal oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+            return <GaugeMinimal oid={oid} value={value} engine={engine} minValue={minValue}
+                                 maxValue={maxValue} {...rest} />;
         default:
-            return <GaugeStandard oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+            return <GaugeStandard oid={oid} value={value} engine={engine} minValue={minValue}
+                                  maxValue={maxValue} {...rest} />;
     }
 };
 
