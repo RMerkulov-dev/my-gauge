@@ -5,12 +5,19 @@ import {ItemValue} from "@eva-ics/webengine-react";
 import {standardGaugeOptions} from "../options";
 
 const GaugeStandard = ({
-                           value = standardGaugeOptions.value,
-                           diameter = standardGaugeOptions.diameter,
+                           oid,
                            minValue,
+                           maxValue,
                            warnValue,
                            critValue,
-                           maxValue,
+                           engine,
+                           digits,
+                           units,
+                           threshold,
+                           format_with,
+                           showValue,
+                           value = standardGaugeOptions.value,
+                           diameter = standardGaugeOptions.diameter,
                            startAngle = standardGaugeOptions.startAngle,
                            endAngle = standardGaugeOptions.endAngle,
                            numTicks = standardGaugeOptions.numTicks,
@@ -22,7 +29,6 @@ const GaugeStandard = ({
                            tipRadius = standardGaugeOptions.tipRadius,
                            needleOffset = standardGaugeOptions.needleOffset,
                            middleRadius = standardGaugeOptions.middleRadius,
-                           engine
                        }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
@@ -134,8 +140,10 @@ const GaugeStandard = ({
                     </g>
                 </svg>
                 <div className="gauge-value">
-                    {/*@ts-ignore*/}
-                    {value ? <ItemValue engine={engine} oid="sensor:tests/temp" digits="2" units="C"/> : ""}
+                    {showValue &&
+                        // @ts-ignore
+                        <ItemValue engine={engine} oid={oid} digits={digits} units={units} threshold={threshold}
+                                   format_with={format_with}/>}
                 </div>
             </div>
 

@@ -5,12 +5,19 @@ import {ItemValue} from "@eva-ics/webengine-react";
 import {sphereGaugeOptions} from "../options";
 
 const GaugeSphere = ({
-                         value = sphereGaugeOptions.value,
-                         diameter = sphereGaugeOptions.diameter,
+                         oid,
                          minValue,
+                         maxValue,
                          warnValue,
                          critValue,
-                         maxValue,
+                         engine,
+                         digits,
+                         units,
+                         threshold,
+                         format_with,
+                         showValue,
+                         value = sphereGaugeOptions.value,
+                         diameter = sphereGaugeOptions.diameter,
                          startAngle = sphereGaugeOptions.startAngle,
                          endAngle = sphereGaugeOptions.endAngle,
                          numTicks = sphereGaugeOptions.numTicks,
@@ -22,7 +29,7 @@ const GaugeSphere = ({
                          tipRadius = sphereGaugeOptions.tipRadius,
                          needleOffset = sphereGaugeOptions.needleOffset,
                          middleRadius = sphereGaugeOptions.middleRadius,
-                         engine
+                     
                      }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
@@ -134,8 +141,10 @@ const GaugeSphere = ({
                     </g>
                 </svg>
                 <div className="gauge-value">
-                    {/*@ts-ignore*/}
-                    {value ? <ItemValue engine={engine} oid="sensor:tests/temp" digits="2" units="C"/> : ""}
+                    {showValue &&
+                        // @ts-ignore
+                        <ItemValue engine={engine} oid={oid} digits={digits} units={units} threshold={threshold}
+                                   format_with={format_with}/>}
                 </div>
             </div>
 

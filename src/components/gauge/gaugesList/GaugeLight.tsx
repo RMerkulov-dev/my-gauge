@@ -6,12 +6,19 @@ import {lightGaugeOptions} from "../options";
 
 
 const GaugeLight = ({
-                        value = lightGaugeOptions.value,
-                        diameter = lightGaugeOptions.diameter,
+                        oid,
                         minValue,
+                        maxValue,
                         warnValue,
                         critValue,
-                        maxValue,
+                        engine,
+                        digits,
+                        units,
+                        threshold,
+                        format_with,
+                        showValue,
+                        value = lightGaugeOptions.value,
+                        diameter = lightGaugeOptions.diameter,
                         startAngle = lightGaugeOptions.startAngle,
                         endAngle = lightGaugeOptions.endAngle,
                         numTicks = lightGaugeOptions.numTicks,
@@ -23,7 +30,7 @@ const GaugeLight = ({
                         tipRadius = lightGaugeOptions.tipRadius,
                         needleOffset = lightGaugeOptions.needleOffset,
                         middleRadius = lightGaugeOptions.middleRadius,
-                        engine
+
                     }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
 
@@ -136,8 +143,10 @@ const GaugeLight = ({
                     </g>
                 </svg>
                 <div className="gauge-value">
-                    {/*@ts-ignore*/}
-                    {value ? <ItemValue engine={engine} oid="sensor:tests/temp" digits="2" units="C"/> : ""}
+                    {showValue &&
+                        // @ts-ignore
+                        <ItemValue engine={engine} oid={oid} digits={digits} units={units} threshold={threshold}
+                                   format_with={format_with}/>}
                 </div>
             </div>
 

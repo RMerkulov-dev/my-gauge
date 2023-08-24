@@ -79,7 +79,8 @@ export interface GaugeParams {
     baseRadius?: number,
     tipRadius?: number,
     needleOffset?: number,
-    middleRadius?: number
+    middleRadius?: number,
+    showValue?: boolean,
 }
 
 
