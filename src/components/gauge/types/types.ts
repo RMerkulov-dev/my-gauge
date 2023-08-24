@@ -1,4 +1,5 @@
 import {Eva} from "@eva-ics/webengine";
+import {ItemValueThreshold} from "@eva-ics/webengine-react";
 
 export interface UseGaugeParams {
     diameter: number;
@@ -55,12 +56,17 @@ export enum GaugeType {
 
 
 export interface GaugeParams {
-    engine?: Eva;
-    oid?: string;
-    value?: number;
-    diameter?: number,
+    oid: string;
     minValue: number,
     maxValue: number,
+    type?: GaugeType;
+    engine?: Eva;
+    value?: number;
+    digits?: number;
+    units?: number;
+    threshold?: Array<ItemValueThreshold>;
+    format_with?: (value: any) => any;
+    diameter?: number,
     warnValue?: number;
     critValue?: number;
     startAngle?: number,
@@ -76,6 +82,4 @@ export interface GaugeParams {
     middleRadius?: number
 }
 
-export interface GaugeConstructor extends GaugeParams {
-    type?: GaugeType;
-}
+

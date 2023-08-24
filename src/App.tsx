@@ -6,7 +6,7 @@ import {Gauge} from "./components/gauge/index";
 const App = ({engine}: { engine: Eva }) => {
 
     return (
-        <Gauge engine={engine} minValue={0} maxValue={95}/>
+        <Gauge oid="sensor:tests/temp" engine={engine} minValue={0} maxValue={95}/>
     )
 }
 

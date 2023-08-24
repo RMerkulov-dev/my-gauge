@@ -1,4 +1,4 @@
-import {StrokeLineCamp} from "../types";
+import {StrokeLineCamp} from "../types/types";
 
 export const standardGaugeOptions = {
     value: 0, // Indicator value

@@ -1,31 +1,30 @@
 import React from 'react';
 import {useEvaState} from "@eva-ics/webengine-react";
-import {GaugeConstructor, GaugeType} from "./types";
+import {GaugeParams, GaugeType} from "./types/types";
 import {GaugeLight, GaugeMinimal, GaugeSphere, GaugeStandard} from "./index";
 
-
 const Gauge = ({
-                   type = GaugeType.STANDARD,
+                   oid,
+                   type,
                    engine,
+                   minValue,
+                   maxValue,
                    ...rest
-               }: GaugeConstructor) => {
+               }: GaugeParams) => {
 
-    const GAUGES = {
-        [GaugeType.STANDARD]: GaugeStandard,
-        [GaugeType.SPHERE]: GaugeSphere,
-        [GaugeType.MINIMAL]: GaugeMinimal,
-        [GaugeType.LIGHT]: GaugeLight,
-    };
-
-    const state = useEvaState({oid: "sensor:tests/temp", engine});
+    const state = useEvaState({oid, engine});
     const value = state.value;
 
-    const SelectedGauge = GAUGES[type];
-
-    return (
-
-        <SelectedGauge value={value} engine={engine}  {...rest}/>
-    );
+    switch (type) {
+        case GaugeType.SPHERE:
+            return <GaugeSphere oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+        case GaugeType.LIGHT:
+            return <GaugeLight oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+        case GaugeType.MINIMAL:
+            return <GaugeMinimal oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+        default:
+            return <GaugeStandard oid={oid} value={value} engine={engine} minValue={0} maxValue={100} {...rest} />;
+    }
 };
 
 export default Gauge;

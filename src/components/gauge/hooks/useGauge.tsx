@@ -1,6 +1,12 @@
 import {useCallback, useMemo} from "react";
 import {degreesToRadians, makeTickMarks, polarToCartesian} from "../libs";
-import {GetArcPropsParams, GetLabelPropsParams, GetNeedleParams, GetTickPropsParams, UseGaugeParams} from "../types";
+import {
+    GetArcPropsParams,
+    GetLabelPropsParams,
+    GetNeedleParams,
+    GetTickPropsParams,
+    UseGaugeParams
+} from "../types/types";
 
 export const useGauge = (params: UseGaugeParams) => {
     const {startAngle, endAngle, numTicks, diameter, domain} = params;

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useGauge} from '../hooks/useGauge';
-import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../types";
+import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../types/types";
 import {ItemValue} from "@eva-ics/webengine-react";
 import {lightGaugeOptions} from "../options";
 
