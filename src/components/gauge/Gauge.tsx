@@ -47,29 +47,72 @@ interface GaugeParams {
 
 const Gauge = ({
                    oid,
-                   type,
-                   engine,
                    minValue,
                    maxValue,
-                   ...rest
+                   type,
+                   engine,
+                   digits,
+                   units,
+                   threshold,
+                   format_with,
+                   diameter,
+                   warnValue,
+                   critValue,
+                   startAngle,
+                   endAngle,
+                   numTicks,
+                   offset,
+                   arcStrokeWidth,
+                   strokeLineCap,
+                   tickLength,
+                   baseRadius,
+                   tipRadius,
+                   needleOffset,
+                   middleRadius,
+                   showValue
                }: GaugeParams) => {
 
     const state = useEvaState({oid, engine});
-    const value = state.value;
+    const {value} = state;
 
     switch (type) {
         case GaugeType.SPHERE:
-            return <GaugeSphere oid={oid} value={value} engine={engine} minValue={minValue}
-                                maxValue={maxValue} {...rest} />;
+            return <GaugeSphere oid={oid} value={value} minValue={minValue} maxValue={maxValue} engine={engine}
+                                digits={digits}
+                                units={units} threshold={threshold} format_with={format_with} diameter={diameter}
+                                warnValue={warnValue} critValue={critValue} startAngle={startAngle} endAngle={endAngle}
+                                numTicks={numTicks} offset={offset} arcStrokeWidth={arcStrokeWidth}
+                                strokeLineCap={strokeLineCap} tickLength={tickLength} baseRadius={baseRadius}
+                                tipRadius={tipRadius} needleOffset={needleOffset} middleRadius={middleRadius}
+                                showValue={showValue}/>;
         case GaugeType.LIGHT:
-            return <GaugeLight oid={oid} value={value} engine={engine} minValue={minValue}
-                               maxValue={maxValue} {...rest} />;
+            return <GaugeLight oid={oid} value={value} minValue={minValue} maxValue={maxValue} engine={engine}
+                               digits={digits}
+                               units={units} threshold={threshold} format_with={format_with} diameter={diameter}
+                               warnValue={warnValue} critValue={critValue} startAngle={startAngle} endAngle={endAngle}
+                               numTicks={numTicks} offset={offset} arcStrokeWidth={arcStrokeWidth}
+                               strokeLineCap={strokeLineCap} tickLength={tickLength} baseRadius={baseRadius}
+                               tipRadius={tipRadius} needleOffset={needleOffset} middleRadius={middleRadius}
+                               showValue={showValue}/>;
         case GaugeType.MINIMAL:
-            return <GaugeMinimal oid={oid} value={value} engine={engine} minValue={minValue}
-                                 maxValue={maxValue} {...rest} />;
+            return <GaugeMinimal oid={oid} value={value} minValue={minValue} maxValue={maxValue} engine={engine}
+                                 digits={digits}
+                                 units={units} threshold={threshold} format_with={format_with} diameter={diameter}
+                                 warnValue={warnValue} critValue={critValue} startAngle={startAngle} endAngle={endAngle}
+                                 numTicks={numTicks} offset={offset} arcStrokeWidth={arcStrokeWidth}
+                                 strokeLineCap={strokeLineCap} tickLength={tickLength} baseRadius={baseRadius}
+                                 tipRadius={tipRadius} needleOffset={needleOffset} middleRadius={middleRadius}
+                                 showValue={showValue}/>;
         default:
-            return <GaugeStandard oid={oid} value={value} engine={engine} minValue={minValue}
-                                  maxValue={maxValue} {...rest} />;
+            return <GaugeStandard oid={oid} value={value} minValue={minValue} maxValue={maxValue} engine={engine}
+                                  digits={digits}
+                                  units={units} threshold={threshold} format_with={format_with} diameter={diameter}
+                                  warnValue={warnValue} critValue={critValue} startAngle={startAngle}
+                                  endAngle={endAngle}
+                                  numTicks={numTicks} offset={offset} arcStrokeWidth={arcStrokeWidth}
+                                  strokeLineCap={strokeLineCap} tickLength={tickLength} baseRadius={baseRadius}
+                                  tipRadius={tipRadius} needleOffset={needleOffset} middleRadius={middleRadius}
+                                  showValue={showValue}/>;
     }
 };
 
