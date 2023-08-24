@@ -1,12 +1,72 @@
 import {useCallback, useMemo} from "react";
-import {degreesToRadians, makeTickMarks, polarToCartesian} from "./libs";
-import {
-    GetArcPropsParams,
-    GetLabelPropsParams,
-    GetNeedleParams,
-    GetTickPropsParams,
-    UseGaugeParams
-} from "./types/types";
+
+
+//types
+
+interface UseGaugeParams {
+    diameter: number;
+    startAngle: number;
+    endAngle: number;
+    numTicks: number;
+    domain: [number, number];
+}
+
+interface GetNeedleParams {
+    value: number;
+    baseRadius: number;
+    tipRadius: number;
+    offset?: number;
+}
+
+interface GetArcPropsParams {
+    offset?: number;
+    startAngle: number;
+    endAngle: number;
+}
+
+interface GetTickPropsParams {
+    length: number;
+    angle: number;
+}
+
+interface GetLabelPropsParams {
+    angle: number;
+    offset: number;
+}
+
+//libs
+const degreesToRadians = (degrees: number) => {
+    return (degrees * Math.PI) / 180;
+};
+
+const makeTickMarks = (
+    minAngle: number,
+    maxAngle: number,
+    numTicks: number
+) => {
+    const tickMarks = [];
+    const angleRange = maxAngle - minAngle;
+    const angleStep = angleRange / (numTicks - 1);
+    for (let i = 0; i < numTicks; i++) {
+        tickMarks.push(Math.floor(minAngle + i * angleStep));
+    }
+    return tickMarks.reverse();
+};
+
+const polarToCartesian = (
+    centerX: number,
+    centerY: number,
+    radius: number,
+    angleInDegrees: number
+) => {
+    const angleInRadians = degreesToRadians(angleInDegrees);
+
+    return {
+        x: centerX + radius * Math.cos(angleInRadians),
+        y: centerY + radius * Math.sin(angleInRadians),
+    };
+};
+
 
 export const useGauge = (params: UseGaugeParams) => {
     const {startAngle, endAngle, numTicks, diameter, domain} = params;

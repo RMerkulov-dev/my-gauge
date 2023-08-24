@@ -1,7 +1,49 @@
 import React from 'react';
-import {useEvaState} from "@eva-ics/webengine-react";
-import {GaugeParams, GaugeType} from "./types/types";
+import {ItemValueThreshold, useEvaState} from "@eva-ics/webengine-react";
 import {GaugeLight, GaugeMinimal, GaugeSphere, GaugeStandard} from "./index";
+import {Eva} from "@eva-ics/webengine";
+
+enum StrokeLineCamp {
+    BUTT = "butt",
+    ROUND = "round",
+    SQUARE = "square",
+    INHERIT = 'inherit'
+}
+
+enum GaugeType {
+    STANDARD = "standard",
+    SPHERE = "sphere",
+    MINIMAL = "minimal",
+    LIGHT = "light"
+}
+
+interface GaugeParams {
+    oid: string;
+    minValue: number,
+    maxValue: number,
+    type?: "standard" | "sphere" | "minimal" | "light";
+    engine?: Eva;
+    value?: number;
+    digits?: number;
+    units?: number;
+    threshold?: Array<ItemValueThreshold>;
+    format_with?: (value: any) => any;
+    diameter?: number,
+    warnValue?: number;
+    critValue?: number;
+    startAngle?: number,
+    endAngle?: number,
+    numTicks?: number,
+    offset?: number,
+    arcStrokeWidth?: number,
+    strokeLineCap?: StrokeLineCamp | undefined,
+    tickLength?: number,
+    baseRadius?: number,
+    tipRadius?: number,
+    needleOffset?: number,
+    middleRadius?: number,
+    showValue?: boolean,
+}
 
 const Gauge = ({
                    oid,

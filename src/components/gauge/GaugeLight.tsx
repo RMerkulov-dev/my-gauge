@@ -1,7 +1,58 @@
 import React, {useEffect, useState} from 'react';
-import {useGauge} from './useGauge';
-import {ClassNameColors, GaugeParams, StrokeLineCamp} from "./types/types";
-import {ItemValue} from "@eva-ics/webengine-react";
+import {useGauge} from './index';
+import {ItemValue, ItemValueThreshold} from "@eva-ics/webengine-react";
+import {Eva} from "@eva-ics/webengine";
+
+enum StrokeLineCamp {
+    BUTT = "butt",
+    ROUND = "round",
+    SQUARE = "square",
+    INHERIT = 'inherit'
+}
+
+enum ClassNameColors {
+    GREEN = "progress-color",
+    YELLOW = "warning-progress-color",
+    RED = "critical-progress-color",
+    TICK = "tick-color",
+    NEEDLE = "needle-color"
+}
+
+enum GaugeType {
+    STANDARD = "standard",
+    SPHERE = "sphere",
+    MINIMAL = "minimal",
+    LIGHT = "light"
+}
+
+
+interface GaugeParams {
+    oid: string;
+    minValue: number,
+    maxValue: number,
+    type?: GaugeType;
+    engine?: Eva;
+    value?: number;
+    digits?: number;
+    units?: number;
+    threshold?: Array<ItemValueThreshold>;
+    format_with?: (value: any) => any;
+    diameter?: number,
+    warnValue?: number;
+    critValue?: number;
+    startAngle?: number,
+    endAngle?: number,
+    numTicks?: number,
+    offset?: number,
+    arcStrokeWidth?: number,
+    strokeLineCap?: StrokeLineCamp | undefined,
+    tickLength?: number,
+    baseRadius?: number,
+    tipRadius?: number,
+    needleOffset?: number,
+    middleRadius?: number,
+    showValue?: boolean,
+}
 
 
 const options = {
