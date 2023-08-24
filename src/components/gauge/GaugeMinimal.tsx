@@ -124,7 +124,7 @@ const GaugeMinimal = ({
                     setProgressColorOfValue(ClassNameColors.YELLOW);
                     break;
                 case value >= critValue:
-                    console.log("true", value)
+
                     setProgressColorOfValue(ClassNameColors.RED);
                     break;
                 default:

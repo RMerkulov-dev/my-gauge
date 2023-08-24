@@ -123,7 +123,7 @@ const GaugeSphere = ({
                     setProgressColorOfValue(ClassNameColors.YELLOW);
                     break;
                 case value >= critValue:
-                    console.log("true", value)
+
                     setProgressColorOfValue(ClassNameColors.RED);
                     break;
                 default:
@@ -211,7 +211,7 @@ const GaugeSphere = ({
                 </svg>
                 <div className="gauge-value">
                     {showValue &&
-                        // @ts-ignore
+
                         <ItemValue engine={engine} oid={oid} digits={digits} units={units} threshold={threshold}
                                    format_with={format_with}/>}
                 </div>
