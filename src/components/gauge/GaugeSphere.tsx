@@ -1,39 +1,55 @@
 import React, {useEffect, useState} from 'react';
-import {useGauge} from '../hooks/useGauge';
-import {ClassNameColors, GaugeParams, StrokeLineCamp} from "../types/types";
+import {useGauge} from './useGauge';
+import {ClassNameColors, GaugeParams, StrokeLineCamp} from "./types/types";
 import {ItemValue} from "@eva-ics/webengine-react";
-import {lightGaugeOptions} from "../options";
 
 
-const GaugeLight = ({
-                        oid,
-                        minValue,
-                        maxValue,
-                        warnValue,
-                        critValue,
-                        engine,
-                        digits,
-                        units,
-                        threshold,
-                        format_with,
-                        showValue,
-                        value = lightGaugeOptions.value,
-                        diameter = lightGaugeOptions.diameter,
-                        startAngle = lightGaugeOptions.startAngle,
-                        endAngle = lightGaugeOptions.endAngle,
-                        numTicks = lightGaugeOptions.numTicks,
-                        offset = lightGaugeOptions.offset,
-                        arcStrokeWidth = lightGaugeOptions.arcStrokeWidth,
-                        strokeLineCap = lightGaugeOptions.strokeLineCap,
-                        tickLength = lightGaugeOptions.tickLength,
-                        baseRadius = lightGaugeOptions.baseRadius,
-                        tipRadius = lightGaugeOptions.tipRadius,
-                        needleOffset = lightGaugeOptions.needleOffset,
-                        middleRadius = lightGaugeOptions.middleRadius,
+const options = {
+    value: 0, // Indicator value
+    diameter: 200, // GaugeStandard diameter value
+    minValue: 0, // Minimum value indicator
+    maxValue: 100, // Maximum value indicator
+    startAngle: 45, // Initial indicator position
+    endAngle: 315, // End indicator position
+    numTicks: 5, // Step of indicator values
+    offset: -50, // Distance of indicator line from the center
+    arcStrokeWidth: 24, // Indicator line thickness
+    strokeLineCap: StrokeLineCamp.BUTT, // Type of progress line
+    tickLength: 10, // Length of ticks
+    baseRadius: 6, // Radius of central point of arrow indicator
+    middleRadius: 14, //Radius of middle circle of arrow indicator
+    tipRadius: 2, // Radius of end point of arrow indicator
+    needleOffset: 10, // Length of arrow indicator
+};
 
-                    }: GaugeParams) => {
+const GaugeSphere = ({
+                         oid,
+                         minValue,
+                         maxValue,
+                         warnValue,
+                         critValue,
+                         engine,
+                         digits,
+                         units,
+                         threshold,
+                         format_with,
+                         showValue,
+                         value = options.value,
+                         diameter = options.diameter,
+                         startAngle = options.startAngle,
+                         endAngle = options.endAngle,
+                         numTicks = options.numTicks,
+                         offset = options.offset,
+                         arcStrokeWidth = options.arcStrokeWidth,
+                         strokeLineCap = options.strokeLineCap,
+                         tickLength = options.tickLength,
+                         baseRadius = options.baseRadius,
+                         tipRadius = options.tipRadius,
+                         needleOffset = options.needleOffset,
+                         middleRadius = options.middleRadius,
+
+                     }: GaugeParams) => {
     const [progressColorOfValue, setProgressColorOfValue] = useState(ClassNameColors.GREEN);
-
 
     if (value > maxValue) {
         value = maxValue
@@ -154,4 +170,4 @@ const GaugeLight = ({
     );
 };
 
-export default GaugeLight;
+export default GaugeSphere;

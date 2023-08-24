@@ -1,8 +1,8 @@
 import Gauge from "./Gauge";
-import GaugeStandard from "./gaugesList/GaugeStandard";
-import GaugeSphere from "./gaugesList/GaugeSphere";
-import GaugeLight from "./gaugesList/GaugeLight";
-import GaugeMinimal from "./gaugesList/GaugeMinimal";
+import GaugeStandard from "./GaugeStandard";
+import GaugeSphere from "./GaugeSphere";
+import GaugeLight from "./GaugeLight";
+import GaugeMinimal from "./GaugeMinimal";
 
 
 export {Gauge, GaugeSphere, GaugeStandard, GaugeLight, GaugeMinimal}
