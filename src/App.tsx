@@ -13,7 +13,8 @@ const App = ({engine}: { engine: Eva }) => {
             {/*<Gauge oid="sensor:tests/temp2" type="light" engine={engine} minValue={0} maxValue={120} critValue={60}/>*/}
             {/*<Gauge oid="sensor:tests/temp2" type="sphere" engine={engine} minValue={0} maxValue={110} warnValue={40}*/}
             {/*       critValue={90}/>*/}
-            <Thermometer oid="sensor:tests/temp" engine={engine} maxValue={150} minValue={-20}/>
+            <Thermometer oid="sensor:tests/temp" engine={engine} maxValue={150} minValue={-20} critValue={60}
+                         warnValue={40}/>
         </>
 
     )
