@@ -11,12 +11,20 @@ const Thermometer = ({oid, engine, minValue, maxValue}) => {
     return (
         <>
             <div className="container">
+
                 <div className="value-wrapper">
                     <span>{maxValue}</span>
-                  
                 </div>
                 <div className="thermometer-wrapper">
                     <div className="progress" style={{height: `${percentage}%`}}></div>
+                    <div className="separator">
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                      
+                    </div>
                 </div>
                 <div className="value-wrapper">
                     <span>{minValue}</span>
