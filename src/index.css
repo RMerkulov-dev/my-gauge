@@ -63,3 +63,36 @@
 .critical-progress-color {
     stroke: #c7472e;
 }
+
+
+/*//thermometer styles*/
+
+.container {
+    position: relative;
+    padding: 20px;
+    margin-left: 100px;
+}
+
+.thermometer-wrapper {
+    width: 20px;
+    height: 100px;
+    background-color: #f0f0f0;
+    position: relative;
+    border-radius: 5px;
+
+}
+
+.progress {
+    background-color: #ee1a2c; /* Progress bar color */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: height 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.value-wrapper {
+    margin-left: 30px;
+
+    color: blue;
+}
