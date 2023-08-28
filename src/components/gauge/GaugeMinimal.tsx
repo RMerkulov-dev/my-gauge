@@ -72,7 +72,7 @@ const options = {
     tipRadius: 2, // Radius of end point of arrow indicator
     needleOffset: 30, // Length of arrow indicator
 };
-options
+
 
 const GaugeMinimal = ({
                           oid,
