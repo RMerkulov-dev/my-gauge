@@ -114,3 +114,63 @@
     height: 100%;
 }
 
+/*Relay button styles*/
+.relay-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 120px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.relay-button-switcher-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+/*FIXME*/
+
+.toggle-on-element {
+    width: 90px;
+    height: 5px;
+    background-color: orange;
+}
+
+.el-1 {
+    width: 30px;
+    height: 5px;
+    background-color: #3ec020;
+}
+
+.toggle-off {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.el-2 {
+    position: relative;
+    width: 30px;
+    height: 5px;
+    background-color: #162612;
+    margin-left: auto;
+}
+
+.el-2:before {
+    position: absolute;
+    content: "";
+    left: -25px;
+    top: -10px;
+    width: 30px;
+    height: 5px;
+    background-color: #dceb15;
+    transform: rotate(45deg);
+}
