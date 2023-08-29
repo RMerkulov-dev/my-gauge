@@ -119,17 +119,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
-    height: 120px;
-    border: 2px solid black;
+    width: 150px;
+    height: 180px;
+    border: 2px solid #eaa612;
+    border-radius: 5px;
     cursor: pointer;
     background-color: transparent;
 }
 
-.relay-button-switcher-container {
+.switcher-container-off {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 5px;
     background: transparent;
     border: none;
@@ -138,39 +139,81 @@
 
 /*FIXME*/
 
-.toggle-on-element {
-    width: 90px;
-    height: 5px;
-    background-color: orange;
-}
-
-.el-1 {
-    width: 30px;
-    height: 5px;
-    background-color: #3ec020;
-}
-
-.toggle-off {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.el-2 {
+.el-left {
     position: relative;
-    width: 30px;
-    height: 5px;
-    background-color: #162612;
-    margin-left: auto;
+    width: 40px;
+    height: 6px;
+    background-color: #eaa612;
+    border-radius: 3px;
 }
 
-.el-2:before {
+.el-left:after {
     position: absolute;
-    content: "";
-    left: -25px;
-    top: -10px;
-    width: 30px;
-    height: 5px;
-    background-color: #dceb15;
-    transform: rotate(45deg);
+    content: '';
+    right: -28px;
+    top: 3px;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 6px solid #eaa612;
+}
+
+.el-right {
+    position: relative;
+    width: 40px;
+    height: 6px;
+    background-color: #eaa612;
+    border-radius: 3px;
+}
+
+.el-right:before {
+    position: absolute;
+    content: '';
+    left: -5px;
+    top: 3px;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 6px solid #eaa612;
+}
+
+.el-right:after {
+    position: absolute;
+    content: '';
+    left: -50px;
+    top: 0;
+    width: 40px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #eaa612;
+    transform-origin: 100% 0;
+    transform: rotateZ(45deg);
+    animation: rotate 0.5s ease-in-out 1
+}
+
+.line {
+    width: 120px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #eaa612;
+}
+
+.el-right.rotated {
+    /* Apply the final rotation directly when the 'rotated' class is added */
+    transform: rotateZ(0deg);
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(45deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+
+    }
+
 }

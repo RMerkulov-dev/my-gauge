@@ -49,23 +49,19 @@ const RelayButtonToggle = ({
             .toggle(oid, true)
             .then((result) => handle_action_finished(result, on_success, on_fail))
             .catch((err) => handle_action_error(err, on_fail));
-
     }
 
     return (
         <div className="relay-button-wrapper" onClick={handle_action}>
-            <div className="relay-button-switcher-container">
-                {toggleOn ?
-                    <div className="toggle-on">
-                        <div className="toggle-on-element"></div>
-                    </div> :
-                    <div className="toggle-off">
-                        <div className="el-1"></div>
-                        <div className="el-2"></div>
-                    </div>
-                }
-            </div>
-
+            {toggleOn ?
+                <div className="switcher-container-on">
+                    <div className="line"></div>
+                </div> :
+                <div className="switcher-container-off">
+                    <div className="el-left"></div>
+                    <div className="el-right"></div>
+                </div>
+            }
         </div>
     );
 };
