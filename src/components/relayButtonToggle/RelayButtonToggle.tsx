@@ -20,9 +20,6 @@ const RelayButtonToggle = ({
     const state = useEvaState({oid: oid, engine});
     const toggleOn = state.value > 0
 
-    console.log(toggleOn)
-
-
     const handle_action_finished = (
         result: ActionResult,
         on_success?: (result: ActionResult) => void,
