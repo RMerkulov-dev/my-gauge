@@ -56,13 +56,13 @@ const RelayButtonToggle = ({
     return (
         <div className="relay-button-wrapper" onClick={handle_action}>
             {toggleOn ?
-                <div className="switcher-container-on">
-                    <div className="el-left"></div>
-                    <div className="el-right"></div>
+                <div className="relay-switch-container">
+                    <div className="relay-contact-left"></div>
+                    <div className="relay-contact-right"></div>
                 </div> :
-                <div className="switcher-container-off">
-                    <div className="el-left"></div>
-                    <div className="el-right-reverse"></div>
+                <div className="relay-switch-container">
+                    <div className="relay-contact-left"></div>
+                    <div className="relay-contact-right__off"></div>
                 </div>
             }
         </div>
