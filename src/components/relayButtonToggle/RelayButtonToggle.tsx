@@ -20,6 +20,8 @@ const RelayButtonToggle = ({
     const state = useEvaState({oid: oid, engine});
     const toggleOn = state.value > 0
 
+    console.log(toggleOn)
+
 
     const handle_action_finished = (
         result: ActionResult,
@@ -55,11 +57,12 @@ const RelayButtonToggle = ({
         <div className="relay-button-wrapper" onClick={handle_action}>
             {toggleOn ?
                 <div className="switcher-container-on">
-                    <div className="line"></div>
+                    <div className="el-left"></div>
+                    <div className="el-right"></div>
                 </div> :
                 <div className="switcher-container-off">
                     <div className="el-left"></div>
-                    <div className="el-right"></div>
+                    <div className="el-right-reverse"></div>
                 </div>
             }
         </div>

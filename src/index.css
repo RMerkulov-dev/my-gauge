@@ -137,6 +137,16 @@
     width: 100%;
 }
 
+.switcher-container-on {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
 /*FIXME*/
 
 .el-left {
@@ -189,7 +199,7 @@
     border-radius: 3px;
     background-color: #eaa612;
     transform-origin: 100% 0;
-    transform: rotateZ(45deg);
+    transform: rotateZ(0deg);
     animation: rotate 0.5s ease-in-out 1
 }
 
