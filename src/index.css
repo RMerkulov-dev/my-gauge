@@ -1,133 +1,121 @@
 .gauge-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .gauge-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100%;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  flex-direction: column;
 }
 
 .gauge-preview {
-    max-width: 100%;
-    overflow: visible;
-    padding: 30px;
+  max-width: 100%;
+  overflow: visible;
+  padding: 30px;
 }
 
 .gauge-value {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
-    fill: #6b7280;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  fill: #6b7280;
 }
 
 .progress-background-color {
-    stroke: #f7fafc;
+  stroke: #f7fafc;
 }
 
 .text-default-color {
-    font-size: 0.875rem;
-    font-weight: 500;
-    fill: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+  fill: #6b7280;
 }
 
 .middle-base-color {
-    fill: #d1d5db;
+  fill: #d1d5db;
 }
 
 .midpoint-color {
-    fill: #ccc;
+  fill: #ccc;
 }
 
 .tick-color {
-    stroke: #ccc;
+  stroke: #ccc;
 }
 
 .needle-color {
-    fill: #374151;
+  fill: #374151;
 }
 
 .progress-color {
-    stroke: #329e11;
+  stroke: #329e11;
 }
 
 .warning-progress-color {
-    stroke: #dceb15;
+  stroke: #dceb15;
 }
 
 .critical-progress-color {
-    stroke: #c7472e;
+  stroke: #c7472e;
 }
-
 
 /*//thermometer styles*/
 
 .thermometer-container {
-    position: relative;
-    padding: 0 10px 0 0;
-    margin-left: 100px;
-    width: 40px;
+  position: relative;
+  padding: 0 10px 0 0;
+  margin-left: 100px;
+  width: 40px;
 }
 
 .thermometer-wrapper {
-    position: relative;
-    width: 20px;
-    height: 100px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
+  position: relative;
+  width: 20px;
+  height: 100px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
 }
 
 .progress {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    transition: height 0.3s ease-in-out;
-    border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: height 0.3s ease-in-out;
+  border-radius: 5px;
 }
 
 .min-value {
-    margin-left: 20px;
-    color: #333131;
-    font-size: 12px;
-    font-style: normal;
+  margin-left: 20px;
+  color: #333131;
+  font-size: 12px;
+  font-style: normal;
 }
 
 .max-value {
-    margin-left: 20px;
-    color: #333131;
-    font-size: 12px;
-    font-style: normal;
+  margin-left: 20px;
+  color: #333131;
+  font-size: 12px;
+  font-style: normal;
 }
 
 .separator {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
-    right: -8px;
-    top: 0;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  right: -8px;
+  top: 0;
+  height: 100%;
 }
 
 /*Relay button styles*/
-.relay-button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 100px;
-    border: 2px solid #eaa612;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: transparent;
-}
 
-.relay-switch-container {
+/* .relay-switch-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -223,26 +211,76 @@
     height: 10px;
     border-radius: 50%;
     border: 6px solid #eaa612;
+} */
+
+.relay-button-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 100px;
+  border: 2px solid #eaa612;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
 }
 
+/* SWITCH ON */
+
+.relay-switch-container {
+  position: relative;
+}
+.connect-left {
+  position: absolute;
+  left: -60px;
+  top: -10px;
+}
+
+.connect-right {
+  position: absolute;
+  left: 2px;
+  top: -14px;
+  transform: rotate(180deg);
+}
+.contact {
+  position: absolute;
+  left: -26px;
+  top: -9px;
+  transform-origin: 100% 29%;
+  transform: rotateZ(45deg);
+  animation: rotate 0.5s ease-in-out 1;
+}
+
+.contact-off {
+  position: absolute;
+  left: -26px;
+  top: -9px;
+  transform-origin: 100% 29%;
+  transform: rotateZ(45deg);
+  animation: rotate-reverse 0.5s ease-in-out 1;
+}
+
+.connect-image {
+  width: 40px;
+}
 
 @keyframes rotate {
-    0% {
-        transform: rotateZ(45deg);
-    }
+  0% {
+    transform: rotateZ(45deg);
+  }
 
-    100% {
-        transform: rotateZ(0deg);
-    }
+  100% {
+    transform: rotateZ(0deg);
+  }
 }
 
 @keyframes rotate-reverse {
-    0% {
-        transform: rotateZ(0deg);
-    }
+  0% {
+    transform: rotateZ(0deg);
+  }
 
-    100% {
-        transform: rotateZ(45deg);
-
-    }
+  100% {
+    transform: rotateZ(45deg);
+  }
 }
