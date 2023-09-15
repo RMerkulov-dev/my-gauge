@@ -1,5 +1,4 @@
 .toast-notification-container {
-  min-width: 150px;
   max-width: 300px;
   border-radius: 5px;
   position: fixed;
@@ -10,22 +9,21 @@
   align-items: baseline;
   justify-content: center;
   gap: 20px;
-
   width: 100%;
-  padding: 15px 5px;
-  border-radius: 5px;
+  padding: 15px 10px;
+  border-radius: 10px;
 }
 
 .toast-success-color {
-  border: 2px solid #32cd32;
+  border: 1px solid #32cd32;
 }
 
 .toast-warning-color {
-  border: 2px solid #ff9f00;
+  border: 1px solid #ff9f00;
 }
 
 .toast-error-color {
-  border: 2px solid #ff2400;
+  border: 1px solid #ff2400;
 }
 
 .toast-image {
