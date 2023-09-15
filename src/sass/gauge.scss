@@ -6,13 +6,11 @@
 }
 
 .gauge-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  box-shadow: 4px 4px 20px 0px rgba(10, 10, 10, 0.24);
-  background-color: var(--cards-bg-color);
-  padding: 30px;
 }
 
 .gauge-preview {
@@ -36,6 +34,27 @@
   margin-right: 5px;
 }
 
+//New
+
+.gauge-label-circle {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  color: #c1c1c1;
+  top: 45%;
+  margin: 0;
+}
+
+.gauge-value-result {
+  position: absolute;
+  font-size: 16px;
+  color: #c1c1c1;
+  bottom: 35%;
+  margin: 0;
+}
+
+//
+
 .gauge-progress-background-color {
   stroke: #f7fafc;
 }
@@ -52,6 +71,7 @@
 
 .gauge-midpoint-color {
   fill: #ccc;
+  width: 30px;
 }
 
 .gauge-tick-color {

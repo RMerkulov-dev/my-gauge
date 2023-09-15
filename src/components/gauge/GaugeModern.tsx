@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {ClassNameColors, GaugeParams, StrokeLineCap} from "./index";
 import {ItemValue} from "@eva-ics/webengine-react";
-import {useGauge} from "./common.tsx";
+import {useGauge} from "./common";
 
 const options = {
     value: 0, // Indicator value
@@ -21,7 +21,7 @@ const options = {
     needleOffset: 10, // Length of arrow indicator
 };
 
-const GaugeSphere = ({
+const GaugeModern = ({
                          oid,
                          minValue,
                          maxValue,
@@ -139,10 +139,7 @@ const GaugeSphere = ({
                     <g id="ticks">
                         {ticks.map((angle: any) => (
                             <React.Fragment key={`tick-group-${angle}`}>
-                                <line
-                                    className={ClassNameColors.Tick}
-                                    {...getTickProps({angle, length: tickLength})}
-                                />
+
                                 <text
                                     className="gauge-text-default-color"
                                     {...getLabelProps({angle, offset: 20})}
@@ -152,22 +149,12 @@ const GaugeSphere = ({
                             </React.Fragment>
                         ))}
                     </g>
-                    <g id="needle">
-                        <circle
-                            className="gauge-middle-base-color"
-                            {...base}
-                            r={middleRadius}
-                        />
-                        <circle className={ClassNameColors.Needle} {...base} />
-                        <circle className={ClassNameColors.Needle} {...tip} />
-                        <polyline className={ClassNameColors.Needle} points={points}/>
-                        <circle className="gauge-midpoint-color" {...base} r={4}/>
-                    </g>
+
                 </svg>
                 <div className="gauge-value">
-                    <p className="gauge-label">{label}</p>
+                    <p className="gauge-label-circle">{label}</p>
                     {showValue && (
-                        <>
+                        <div className="gauge-value-result">
                             <ItemValue
                                 engine={engine}
                                 oid={oid}
@@ -176,7 +163,7 @@ const GaugeSphere = ({
                                 threshold={threshold}
                                 format_with={format_with}
                             />
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
@@ -184,4 +171,4 @@ const GaugeSphere = ({
     );
 };
 
-export default GaugeSphere;
+export default GaugeModern;
