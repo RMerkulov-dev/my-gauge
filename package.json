@@ -11,7 +11,8 @@
   "dependencies": {
     "@eva-ics/webengine-react": "^0.1.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.67.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
