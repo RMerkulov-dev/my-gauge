@@ -9,57 +9,67 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
   flex-direction: column;
+  box-shadow: 4px 4px 20px 0px rgba(10, 10, 10, 0.24);
+  background-color: var(--cards-bg-color);
+  padding: 30px;
 }
 
 .gauge-preview {
   max-width: 100%;
   overflow: visible;
-  padding: 30px;
 }
 
 .gauge-value {
-  margin: 0;
+  margin-top: 30px;
   font-size: 1rem;
   font-weight: 500;
   fill: #6b7280;
+  color: var(--secondary-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.progress-background-color {
+.gauge-label {
+  font-weight: normal;
+  margin-right: 5px;
+}
+
+.gauge-progress-background-color {
   stroke: #f7fafc;
 }
 
-.text-default-color {
+.gauge-text-default-color {
   font-size: 0.875rem;
   font-weight: 500;
   fill: #6b7280;
 }
 
-.middle-base-color {
+.gauge-middle-base-color {
   fill: #d1d5db;
 }
 
-.midpoint-color {
+.gauge-midpoint-color {
   fill: #ccc;
 }
 
-.tick-color {
+.gauge-tick-color {
   stroke: #ccc;
 }
 
-.needle-color {
+.gauge-needle-color {
   fill: #374151;
 }
 
-.progress-color {
+.gauge-progress-color {
   stroke: #329e11;
 }
 
-.warning-progress-color {
+.gauge-warning-progress-color {
   stroke: #dceb15;
 }
 
-.critical-progress-color {
+.gauge-critical-progress-color {
   stroke: #c7472e;
 }
