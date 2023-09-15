@@ -2,55 +2,40 @@ import React, {useEffect, useState} from 'react';
 import {ToastMessageProps, ToastType} from "./index";
 
 const ToastMessage = ({type, message, position, showTime}: ToastMessageProps) => {
-    const [hideToast, setHideToast] = useState(false);
-
+    const [hideToast, setHideToast] = useState(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setHideToast(true)
+            setHideToast(false);
         }, showTime);
         return () => {
             clearInterval(interval);
-        }
+        };
     }, []);
 
-    const ToastSuccess = () => {
-        return <div className="toast-notification toast-success-color">
-            <p className="toast-image">&#9989;</p>
-            <h6 className="toast-message">{message}</h6>
-        </div>
-    }
+    const toastConfig = {
+        [ToastType.Success]: {
+            class: "toast-notification toast-success-color",
+            image: "✅"
+        },
+        [ToastType.Warning]: {
+            class: "toast-notification toast-warning-color",
+            image: "⭕"
+        },
+        [ToastType.Error]: {
+            class: "toast-notification toast-error-color",
+            image: "❌"
+        },
+    };
 
-    const ToastWarning = () => {
-        return (
-
-            <div className="toast-notification toast-warning-color">
-                <p className="toast-image">&#11093;</p>
+    return hideToast ? (
+        <div className={`toast-notification-container ${position}`}>
+            <div className={`toast-notification ${toastConfig[type].class}`}>
+                <p className="toast-image">{toastConfig[type].image}</p>
                 <h6 className="toast-message">{message}</h6>
             </div>
-
-        )
-    }
-
-    const ToastError = () => {
-        return <div className="toast-notification toast-error-color">
-            <p className="toast-image">&#9940;</p>
-            <h6 className="toast-message">{message}</h6>
         </div>
-    }
-
-    return (
-        <>
-            {!hideToast &&
-                <div className={`toast-notification-container ${position}`}>
-                    {type === ToastType.Success && <ToastSuccess/>}
-                    {type === ToastType.Warning && <ToastWarning/>}
-                    {type === ToastType.Error && <ToastError/>}
-                </div>
-            }
-        </>
-
-    )
+    ) : null;
 };
 
 export default ToastMessage;
