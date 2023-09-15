@@ -1,46 +1,66 @@
 .thermometer-container {
   position: relative;
-  padding: 0 10px 0 0;
-  margin-left: 100px;
-  width: 40px;
-}
-
-.thermometer-wrapper {
-  position: relative;
-  width: 20px;
-  height: 100px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
-
-.progress {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  transition: height 0.3s ease-in-out;
-  border-radius: 5px;
 }
 
-.min-value {
-  margin-left: 20px;
-  color: #333131;
+.thermometer-min-value {
+  margin-left: -20px;
+  color: #c1c1c1;
   font-size: 12px;
   font-style: normal;
 }
 
-.max-value {
-  margin-left: 20px;
-  color: #333131;
+.thermometer-progress-container {
+  position: relative;
+  width: 10px;
+  height: 100px;
+  background-color: #F3F3F3;
+  transform: rotate(180deg);
+}
+
+.thermometer-max-value {
+  margin-left: -20px;
+  color: #c1c1c1;
   font-size: 12px;
   font-style: normal;
 }
 
-.separator {
+//No need to add at the documentation.
+.thermometer-separator {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
+  color: #c1c1c1;
   right: -8px;
   top: 0;
   height: 100%;
+}
+
+////////
+
+.thermometer-values-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 5px;
+  font-weight: normal;
+  color: #c1c1c1;
+}
+
+.thermometer-label {
+  margin: 0;
+}
+
+.thermometer-progress-color {
+  background-color: #02CA2E;
+}
+
+.thermometer-warning-color {
+  background-color: #F19F00;
+}
+
+.thermometer-critical-color {
+  background-color: #E71B21;
 }

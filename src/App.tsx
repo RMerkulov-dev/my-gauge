@@ -2,7 +2,7 @@ import React from 'react';
 import {Eva} from "@eva-ics/webengine";
 import {Gauge, RelayButtonToggle} from "./components/gauge";
 import Thermometer from "./components/thermometer/Thermometer";
-import {ProgressBar} from "./components/ProgressBar";
+import {ProgressBar} from "./components/progressBar";
 
 
 const App = ({engine}: { engine: Eva }) => {
@@ -15,10 +15,11 @@ const App = ({engine}: { engine: Eva }) => {
             {/*<Gauge oid="sensor:tests/temp2" type="light" engine={engine} minValue={0} maxValue={120} critValue={60}/>*/}
             {/*<Gauge oid="sensor:tests/temp2" type="sphere" engine={engine} minValue={0} maxValue={110} warnValue={40}*/}
             {/*       critValue={90}/>*/}
-            <Thermometer oid="sensor:tests/temp" engine={engine} maxValue={150} minValue={-20} critValue={60}
-                         warnValue={40}/>
-
-            <div style={{width: "200px", marginLeft: "300px"}}>
+            <div style={{marginLeft: "300px"}}>
+                <Thermometer oid="sensor:tests/temp" engine={engine} maxValue={150} minValue={-20} critValue={60}
+                             warnValue={40} showValue label="Temperature" showMinMax/>
+            </div>
+            <div style={{width: "200px", marginLeft: "300px", marginTop: "100px"}}>
                 <ProgressBar oid="sensor:tests/temp" minValue={0} maxValue={100} engine={engine} showMinMaxValues
                              showValue label="Temp"/>
             </div>
