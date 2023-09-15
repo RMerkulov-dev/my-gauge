@@ -34,7 +34,7 @@ const ToastMessage = ({type, message, position, showTime}: ToastMessageProps) =>
 
     const ToastError = () => {
         return <div className="toast-notification toast-error-color">
-            <p className="toast-image">&#9989;</p>
+            <p className="toast-image">&#9940;</p>
             <h6 className="toast-message">{message}</h6>
         </div>
     }

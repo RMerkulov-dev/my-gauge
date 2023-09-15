@@ -22,7 +22,7 @@ const App = ({engine}: { engine: Eva }) => {
                     setShowToast(!showToast)
                 }}>TOAST
                 </button>
-                {showToast && <ToastMessage type={ToastType.Success} message="Success" position={ToastPosition.TopRight}
+                {showToast && <ToastMessage type={ToastType.Error} message="Error" position={ToastPosition.TopRight}
                                             showTime={5000}/>}
             </div>
 

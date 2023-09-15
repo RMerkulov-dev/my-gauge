@@ -45,7 +45,7 @@
   top: 3%;
   right: 4%;
   transition: transform .6s ease-in-out;
-  animation: toast-in-right .7s;
+  animation: toast-in-right .4s;
 
 }
 
@@ -53,7 +53,7 @@
   top: 12px;
   left: 12px;
   transition: transform .6s ease-in;
-  animation: toast-in-left .7s;
+  animation: toast-in-left .4s;
 }
 
 @keyframes toast-in-right {
