@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Eva} from "@eva-ics/webengine";
 import {Gauge, GaugeType} from "./components/gauge";
 import Thermometer from "./components/thermometer/Thermometer";
 import {ProgressBar} from "./components/progressBar";
+import {ToastMessage, ToastPosition, ToastType} from "./components/toast";
 
 
 const App = ({engine}: { engine: Eva }) => {
+    const [showToast, setShowToast] = useState(false);
+
 
     return (
         <>
@@ -13,6 +16,16 @@ const App = ({engine}: { engine: Eva }) => {
                 <Gauge oid="sensor:tests/temp" type={GaugeType.Modern} engine={engine} minValue={0} maxValue={95}
                        showValue arcStrokeWidth={10} diameter={250} label="TEMP" units=" &#8451;"/>
             </div>
+
+            <div>
+                <button onClick={() => {
+                    setShowToast(!showToast)
+                }}>TOAST
+                </button>
+                {showToast && <ToastMessage type={ToastType.Success} message="Success" position={ToastPosition.TopRight}
+                                            showTime={5000}/>}
+            </div>
+
 
             {/*<Gauge oid="sensor:tests/temp2" type="minimal" engine={engine} minValue={0} maxValue={105} warnValue={60}/>*/}
             {/*<Gauge oid="sensor:tests/temp2" type="light" engine={engine} minValue={0} maxValue={120} critValue={60}/>*/}
