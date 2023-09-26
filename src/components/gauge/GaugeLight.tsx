@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ClassNameColors, GaugeParams, StrokeLineCap } from "./index";
 import { ItemValue } from "@eva-ics/webengine-react";
-import { useGauge } from "./common.tsx";
+import { useGauge } from "./common";
 
 const options = {
   value: 0, // Indicator value
@@ -27,6 +27,8 @@ const GaugeLight = ({
   maxValue,
   warnValue,
   critValue,
+  lowWarnValue,
+  lowCritValue,
   engine,
   digits,
   units,
@@ -49,7 +51,7 @@ const GaugeLight = ({
   middleRadius = options.middleRadius,
 }: GaugeParams) => {
   const [progressColorOfValue, setProgressColorOfValue] = useState(
-    ClassNameColors.Green
+    ClassNameColors.Green,
   );
 
   if (value > maxValue) {
@@ -61,11 +63,11 @@ const GaugeLight = ({
       setProgressColorOfValue(ClassNameColors.Green);
     } else if (critValue === undefined) {
       setProgressColorOfValue(
-        value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow
+        value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
       );
     } else if (warnValue === undefined) {
       setProgressColorOfValue(
-        value < critValue ? ClassNameColors.Green : ClassNameColors.Red
+        value < critValue ? ClassNameColors.Green : ClassNameColors.Red,
       );
     } else {
       switch (true) {

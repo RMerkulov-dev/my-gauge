@@ -44,6 +44,8 @@ export interface GaugeParams {
     diameter?: number;
     warnValue?: number;
     critValue?: number;
+    lowWarnValue?: number;
+    lowCritValue?: number;
     startAngle?: number;
     endAngle?: number;
     numTicks?: number;
