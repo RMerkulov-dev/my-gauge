@@ -61,33 +61,52 @@ const GaugeLight = ({
   useEffect(() => {
     if (!lowWarnValue && !warnValue && !lowCritValue && !critValue) {
       setProgressColorOfValue(ClassNameColors.Green);
+      console.log("1");
     } else if (!critValue) {
       setProgressColorOfValue(
         value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
       );
+      console.log("2");
     } else if (!warnValue) {
       setProgressColorOfValue(
         value < critValue ? ClassNameColors.Green : ClassNameColors.Red,
       );
+      console.log("3");
+    } else if (!lowWarnValue) {
+      setProgressColorOfValue(
+        value < lowCritValue! ? ClassNameColors.Green : ClassNameColors.Red,
+      );
+      console.log("4");
+    } else if (!lowCritValue) {
+      setProgressColorOfValue(
+        value < critValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
+      );
+      console.log("1");
     } else {
       switch (true) {
         case value >= minValue && value < lowWarnValue!:
           setProgressColorOfValue(ClassNameColors.Green);
+          console.log("Switch-1");
           break;
         case value >= lowWarnValue! && value < warnValue:
           setProgressColorOfValue(ClassNameColors.Red);
+          console.log("Switch-2");
           break;
         case value >= warnValue! && value < lowCritValue!:
           setProgressColorOfValue(ClassNameColors.Yellow);
+          console.log("Switch-3");
           break;
         case value >= lowCritValue! && value < critValue:
           setProgressColorOfValue(ClassNameColors.Red);
+          console.log("Switch-4");
           break;
         case value >= critValue:
           setProgressColorOfValue(ClassNameColors.Red);
+          console.log("Switch-5");
           break;
         default:
           setProgressColorOfValue(ClassNameColors.Green);
+          console.log("Switch-6");
       }
     }
 
