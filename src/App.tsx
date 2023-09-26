@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
 import {Eva} from "@eva-ics/webengine";
 import {Gauge, GaugeType} from "./components/gauge";
-import Thermometer from "./components/thermometer/Thermometer";
-import {ProgressBar} from "./components/progressBar";
-import {ToastMessage, ToastPosition, ToastType} from "./components/toast";
-import GridLayoutPrototype from "./components/gridLayout/GridLayoutPrototype";
 
 
 const App = ({engine}: { engine: Eva }) => {
@@ -26,7 +22,9 @@ const App = ({engine}: { engine: Eva }) => {
             {/*    {showToast && <ToastMessage type={ToastType.Error} message="Error" position={ToastPosition.TopRight}*/}
             {/*                                showTime={2000}/>}*/}
             {/*</div>*/}
-            {/*<Gauge oid="sensor:tests/temp2" type="minimal" engine={engine} minValue={0} maxValue={105} warnValue={60}/>*/}
+            <Gauge oid="sensor:tests/temp2" type={GaugeType.Light} engine={engine} minValue={0} maxValue={105}
+                   diameter={250}
+                   warnValue={60}/>
             {/*<Gauge oid="sensor:tests/temp2" type="light" engine={engine} minValue={0} maxValue={120} critValue={60}/>*/}
             {/*<Gauge oid="sensor:tests/temp2" type="sphere" engine={engine} minValue={0} maxValue={110} warnValue={40}*/}
             {/*       critValue={90}/>*/}
@@ -41,7 +39,7 @@ const App = ({engine}: { engine: Eva }) => {
 
             {/*<RelayButtonToggle oid="unit:tests/door_remote" engine={engine}/>*/}
 
-            <GridLayoutPrototype oid="sensor:tests/temp" engine={engine}/>
+
         </>
 
     )
