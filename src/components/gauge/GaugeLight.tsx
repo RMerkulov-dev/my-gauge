@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ClassNameColors, GaugeParams, StrokeLineCap } from "./index";
 import { ItemValue } from "@eva-ics/webengine-react";
-import { useGauge } from "./common";
+import { calculateColor, useGauge } from "./common";
 
 const options = {
   value: 0, // Indicator value
@@ -50,112 +50,19 @@ const GaugeLight = ({
   needleOffset = options.needleOffset,
   middleRadius = options.middleRadius,
 }: GaugeParams) => {
-  const [progressColorOfValue, setProgressColorOfValue] = useState(
-    ClassNameColors.Green,
+  const color = calculateColor(
+    value,
+    warnValue,
+    critValue,
+    lowWarnValue,
+    lowCritValue,
   );
 
   if (value > maxValue) {
     value = maxValue;
+  } else if (value < minValue) {
+    value = minValue;
   }
-
-  useEffect(() => {
-    if (!lowWarnValue && !warnValue && !lowCritValue && !critValue) {
-      setProgressColorOfValue(ClassNameColors.Green);
-      console.log("1");
-    } else if (!critValue) {
-      setProgressColorOfValue(
-        value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
-      );
-      console.log("2");
-    } else if (!warnValue) {
-      setProgressColorOfValue(
-        value < critValue ? ClassNameColors.Green : ClassNameColors.Red,
-      );
-      console.log("3");
-    } else if (!lowWarnValue) {
-      setProgressColorOfValue(
-        value < lowCritValue! ? ClassNameColors.Green : ClassNameColors.Red,
-      );
-      console.log("4");
-    } else if (!lowCritValue) {
-      setProgressColorOfValue(
-        value < critValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
-      );
-      console.log("1");
-    } else {
-      switch (true) {
-        case value >= minValue && value < lowWarnValue!:
-          setProgressColorOfValue(ClassNameColors.Green);
-          console.log("Switch-1");
-          break;
-        case value >= lowWarnValue! && value < warnValue:
-          setProgressColorOfValue(ClassNameColors.Red);
-          console.log("Switch-2");
-          break;
-        case value >= warnValue! && value < lowCritValue!:
-          setProgressColorOfValue(ClassNameColors.Yellow);
-          console.log("Switch-3");
-          break;
-        case value >= lowCritValue! && value < critValue:
-          setProgressColorOfValue(ClassNameColors.Red);
-          console.log("Switch-4");
-          break;
-        case value >= critValue:
-          setProgressColorOfValue(ClassNameColors.Red);
-          console.log("Switch-5");
-          break;
-        default:
-          setProgressColorOfValue(ClassNameColors.Green);
-          console.log("Switch-6");
-      }
-    }
-
-    // if (
-    //   warnValue === undefined &&
-    //   critValue === undefined &&
-    //   lowWarnValue === undefined &&
-    //   lowCritValue === undefined
-    // ) {
-    //   setProgressColorOfValue(ClassNameColors.Green);
-    // } else if (critValue === undefined) {
-    //   setProgressColorOfValue(
-    //     value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
-    //   );
-    // } else if (warnValue === undefined) {
-    //   setProgressColorOfValue(
-    //     value < critValue ? ClassNameColors.Green : ClassNameColors.Red,
-    //   );
-    // } else {
-    //   switch (true) {
-    //     case value >= minValue && value < lowWarnValue!:
-    //       setProgressColorOfValue(ClassNameColors.Green);
-    //       break;
-    //     case value >= lowWarnValue! && value < warnValue:
-    //       setProgressColorOfValue(ClassNameColors.Yellow);
-    //       break;
-    //     case value > warnValue && value < lowCritValue!:
-    //       setProgressColorOfValue(ClassNameColors.Yellow);
-    //       break;
-    //     case value >= lowCritValue! && value < critValue:
-    //       setProgressColorOfValue(ClassNameColors.Red);
-    //       break;
-    //     case value >= critValue:
-    //       setProgressColorOfValue(ClassNameColors.Red);
-    //       break;
-    //     default:
-    //       return;
-    //   }
-    // }
-  }, [
-    value,
-    warnValue,
-    critValue,
-    minValue,
-    maxValue,
-    progressColorOfValue,
-    lowCritValue,
-    lowWarnValue,
-  ]);
 
   const {
     ticks,
@@ -204,7 +111,7 @@ const GaugeLight = ({
                 endAngle: valueToAngle(value),
               })}
               fill="none"
-              className={progressColorOfValue}
+              className={color}
               strokeWidth={arcStrokeWidth}
               strokeLinecap={strokeLineCap}
             />

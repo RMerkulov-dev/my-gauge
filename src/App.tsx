@@ -22,13 +22,15 @@ const App = ({ engine }: { engine: Eva }) => {
       {/*</div>*/}
       <Gauge
         oid="sensor:tests/temp2"
-        type={GaugeType.Light}
+        type={GaugeType.Modern}
         engine={engine}
         minValue={0}
         maxValue={105}
         diameter={250}
         lowWarnValue={30}
+        critValue={70}
         showValue
+        label="TEMP"
       />
       {/*<Gauge oid="sensor:tests/temp2" type="light" engine={engine} minValue={0} maxValue={120} critValue={60}/>*/}
       {/*<Gauge oid="sensor:tests/temp2" type="sphere" engine={engine} minValue={0} maxValue={110} warnValue={40}*/}

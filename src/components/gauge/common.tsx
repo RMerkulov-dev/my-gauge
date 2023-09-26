@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from "react";
+import { ClassNameColors } from "./index";
 
 //Types
 
@@ -41,7 +42,7 @@ const degreesToRadians = (degrees: number) => {
 const makeTickMarks = (
   minAngle: number,
   maxAngle: number,
-  numTicks: number
+  numTicks: number,
 ) => {
   const tickMarks = [];
   const angleRange = maxAngle - minAngle;
@@ -56,7 +57,7 @@ const polarToCartesian = (
   centerX: number,
   centerY: number,
   radius: number,
-  angleInDegrees: number
+  angleInDegrees: number,
 ) => {
   const angleInRadians = degreesToRadians(angleInDegrees);
 
@@ -88,7 +89,7 @@ export const useGauge = (params: UseGaugeParams) => {
         textAnchor: "middle",
       };
     },
-    [diameter, radius]
+    [diameter, radius],
   );
 
   const getTickProps = useCallback(
@@ -105,7 +106,7 @@ export const useGauge = (params: UseGaugeParams) => {
         y2: p2.y,
       };
     },
-    [ticks, diameter, radius]
+    [ticks, diameter, radius],
   );
 
   const angleToValue = (angle: number) => {
@@ -150,7 +151,7 @@ export const useGauge = (params: UseGaugeParams) => {
         ...rest,
       };
     },
-    [diameter, radius]
+    [diameter, radius],
   );
 
   const getNeedleProps = useCallback(
@@ -167,7 +168,7 @@ export const useGauge = (params: UseGaugeParams) => {
         0,
         0,
         radius - offset,
-        angle + 90
+        angle + 90,
       );
 
       return {
@@ -207,7 +208,7 @@ export const useGauge = (params: UseGaugeParams) => {
           .join(" "),
       };
     },
-    [valueToAngle, diameter, radius]
+    [valueToAngle, diameter, radius],
   );
 
   const calculatediameterForDirection = useCallback(
@@ -216,7 +217,7 @@ export const useGauge = (params: UseGaugeParams) => {
       const distance = (Math.cos(degreesToRadians(angle)) * diameter) / 2;
       return distance;
     },
-    [diameter]
+    [diameter],
   );
 
   const getSVGProps = () => {
@@ -224,11 +225,11 @@ export const useGauge = (params: UseGaugeParams) => {
       if (startAngle < deg && endAngle > deg) return diameter / 2;
       const startAngleDistance = calculatediameterForDirection(
         startAngle + 90,
-        deg + 90
+        deg + 90,
       );
       const endAngleDistance = calculatediameterForDirection(
         endAngle + 90,
-        deg + 90
+        deg + 90,
       );
       return Math.max(0, startAngleDistance, endAngleDistance);
     };
@@ -262,4 +263,29 @@ export const useGauge = (params: UseGaugeParams) => {
     getNeedleProps,
     getSVGProps,
   };
+};
+
+export const calculateColor = (
+  value?: number,
+  warnValue?: number,
+  critValue?: number,
+  lowWarnValue?: number,
+  lowCritValue?: number,
+) => {
+  if (value === undefined || isNaN(value)) {
+    return ClassNameColors.Green;
+  }
+  if (lowCritValue !== undefined && value <= lowCritValue) {
+    return ClassNameColors.Red;
+  }
+  if (lowWarnValue !== undefined && value <= lowWarnValue) {
+    return ClassNameColors.Yellow;
+  }
+  if (critValue !== undefined && value >= critValue) {
+    return ClassNameColors.Red;
+  }
+  if (warnValue !== undefined && value >= warnValue) {
+    return ClassNameColors.Yellow;
+  }
+  return ClassNameColors.Green;
 };
