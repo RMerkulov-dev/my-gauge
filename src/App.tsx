@@ -27,6 +27,8 @@ const App = ({ engine }: { engine: Eva }) => {
         minValue={0}
         maxValue={105}
         diameter={250}
+        critValue={70}
+        showValue
       />
       {/*<Gauge oid="sensor:tests/temp2" type="light" engine={engine} minValue={0} maxValue={120} critValue={60}/>*/}
       {/*<Gauge oid="sensor:tests/temp2" type="sphere" engine={engine} minValue={0} maxValue={110} warnValue={40}*/}

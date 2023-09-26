@@ -59,32 +59,84 @@ const GaugeLight = ({
   }
 
   useEffect(() => {
-    if (warnValue === undefined && critValue === undefined) {
+    if (!lowWarnValue && !warnValue && !lowCritValue && !critValue) {
       setProgressColorOfValue(ClassNameColors.Green);
-    } else if (critValue === undefined) {
+    } else if (!critValue) {
       setProgressColorOfValue(
         value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
       );
-    } else if (warnValue === undefined) {
+    } else if (!warnValue) {
       setProgressColorOfValue(
         value < critValue ? ClassNameColors.Green : ClassNameColors.Red,
       );
     } else {
       switch (true) {
-        case value >= minValue && value < warnValue:
+        case value >= minValue && value < lowWarnValue!:
           setProgressColorOfValue(ClassNameColors.Green);
           break;
-        case value > warnValue && value < critValue:
+        case value >= lowWarnValue! && value < warnValue:
+          setProgressColorOfValue(ClassNameColors.Red);
+          break;
+        case value >= warnValue! && value < lowCritValue!:
           setProgressColorOfValue(ClassNameColors.Yellow);
+          break;
+        case value >= lowCritValue! && value < critValue:
+          setProgressColorOfValue(ClassNameColors.Red);
           break;
         case value >= critValue:
           setProgressColorOfValue(ClassNameColors.Red);
           break;
         default:
-          return;
+          setProgressColorOfValue(ClassNameColors.Green);
       }
     }
-  }, [value, warnValue, critValue, minValue, maxValue, progressColorOfValue]);
+
+    // if (
+    //   warnValue === undefined &&
+    //   critValue === undefined &&
+    //   lowWarnValue === undefined &&
+    //   lowCritValue === undefined
+    // ) {
+    //   setProgressColorOfValue(ClassNameColors.Green);
+    // } else if (critValue === undefined) {
+    //   setProgressColorOfValue(
+    //     value < warnValue! ? ClassNameColors.Green : ClassNameColors.Yellow,
+    //   );
+    // } else if (warnValue === undefined) {
+    //   setProgressColorOfValue(
+    //     value < critValue ? ClassNameColors.Green : ClassNameColors.Red,
+    //   );
+    // } else {
+    //   switch (true) {
+    //     case value >= minValue && value < lowWarnValue!:
+    //       setProgressColorOfValue(ClassNameColors.Green);
+    //       break;
+    //     case value >= lowWarnValue! && value < warnValue:
+    //       setProgressColorOfValue(ClassNameColors.Yellow);
+    //       break;
+    //     case value > warnValue && value < lowCritValue!:
+    //       setProgressColorOfValue(ClassNameColors.Yellow);
+    //       break;
+    //     case value >= lowCritValue! && value < critValue:
+    //       setProgressColorOfValue(ClassNameColors.Red);
+    //       break;
+    //     case value >= critValue:
+    //       setProgressColorOfValue(ClassNameColors.Red);
+    //       break;
+    //     default:
+    //       return;
+    //   }
+    // }
+  }, [
+    value,
+    warnValue,
+    critValue,
+    minValue,
+    maxValue,
+    progressColorOfValue,
+    lowCritValue,
+    lowWarnValue,
+  ]);
 
   const {
     ticks,
