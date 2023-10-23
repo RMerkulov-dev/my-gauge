@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ClassNameColors, GaugeParams, StrokeLineCap } from "./index";
 import { ItemValue } from "@eva-ics/webengine-react";
-import {calculateColor, useGauge} from "./common";
-
+import { calculateColor, useGauge } from "./common";
 
 const options = {
   value: 0, // Indicator value
@@ -28,8 +27,8 @@ const GaugeStandard = ({
   maxValue,
   warnValue,
   critValue,
-    lowCritValue,
-    lowWarnValue,
+  lowCritValue,
+  lowWarnValue,
   engine,
   digits,
   units,
@@ -51,13 +50,21 @@ const GaugeStandard = ({
   needleOffset = options.needleOffset,
   middleRadius = options.middleRadius,
 }: GaugeParams) => {
+  const initialFontSize = 12;
+  const [fontSize, setFontSize] = useState(initialFontSize);
+
+  useEffect(() => {
+    const scaledFontSize = Math.round(Math.min(2 + (diameter * 0.5) / 10, 24));
+    setFontSize(scaledFontSize % 2 === 0 ? scaledFontSize : scaledFontSize + 1);
+    if (diameter < 200) setFontSize(initialFontSize);
+  }, [diameter, fontSize]);
 
   const color = calculateColor(
-      value,
-      warnValue,
-      critValue,
-      lowWarnValue,
-      lowCritValue,
+    value,
+    warnValue,
+    critValue,
+    lowWarnValue,
+    lowCritValue,
   );
 
   if (value > maxValue) {
@@ -146,7 +153,7 @@ const GaugeStandard = ({
             <circle className="gauge-midpoint-color" {...base} r={4} />
           </g>
         </svg>
-        <div className="gauge-value">
+        <div className="gauge-value" style={{ fontSize: `${fontSize}px` }}>
           <p className="gauge-label">{label}</p>
           {showValue && (
             <>

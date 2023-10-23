@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GaugeParams, StrokeLineCap } from "./index";
 import { ItemValue } from "@eva-ics/webengine-react";
 import { calculateColor, useGauge } from "./common";
@@ -45,6 +45,15 @@ const GaugeModern = ({
   arcStrokeWidth = options.arcStrokeWidth,
   strokeLineCap = StrokeLineCap.Butt,
 }: GaugeParams) => {
+  const initialFontSize = 12;
+  const [fontSize, setFontSize] = useState(initialFontSize);
+
+  useEffect(() => {
+    const scaledFontSize = Math.round(Math.min(2 + (diameter * 0.5) / 10, 24));
+    setFontSize(scaledFontSize % 2 === 0 ? scaledFontSize : scaledFontSize + 1);
+    if (diameter < 200) setFontSize(initialFontSize);
+  }, [diameter, fontSize]);
+
   const color = calculateColor(
     value,
     warnValue,
@@ -115,7 +124,7 @@ const GaugeModern = ({
             ))}
           </g>
         </svg>
-        <div className="gauge-value">
+        <div className="gauge-value" style={{ fontSize: `${fontSize}px` }}>
           <p className="gauge-label-circle">{label}</p>
           {showValue && (
             <div className="gauge-value-result">
